@@ -1,0 +1,7 @@
+{
+  "name": "germina",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
