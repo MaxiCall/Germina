@@ -1,3 +1,31 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<div class="ion-page" id="main-content">
+  <ion-content class="main-content">
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+  <div class="bottom-menu" *ngIf="!isLaunchScreen()">
+    <button [class.active]="isActive('/mappa')" (click)="navigateTo('/mappa')" class="menu-btn">
+      <span class="menu-btn-span">
+        <img *ngIf="isActive('/mappa')" src="assets/selezione-icona.png" alt="Seleccionado" class="selected-icon" />
+        <img src="assets/mappa-icona.png" alt="Mappa" class="main-icon" />
+      </span>
+    </button>
+    <button [class.active]="isActive('/semi')" (click)="navigateTo('/semi')" class="menu-btn">
+      <span class="menu-btn-span">
+        <img *ngIf="isActive('/semi') || router.url.startsWith('/dettagli-semi')" src="assets/selezione-icona.png" alt="Seleccionado" class="selected-icon" />
+        <img src="assets/semi-icona.png" alt="Semi" class="main-icon" />
+      </span>
+    </button>
+    <button [class.active]="isActive('/ricette') || router.url.startsWith('/dettagli-ricette')" (click)="navigateTo('/ricette')" class="menu-btn">
+      <span class="menu-btn-span">
+        <img *ngIf="isActive('/ricette') || router.url.startsWith('/dettagli-ricette')" src="assets/selezione-icona.png" alt="Seleccionado" class="selected-icon" />
+        <img src="assets/ricette-icona.png" alt="Ricette" class="main-icon" />
+      </span>
+    </button>
+    <button [class.active]="isActive('/arpa')" (click)="navigateTo('/arpa')" class="menu-btn">
+      <span class="menu-btn-span">
+        <img *ngIf="isActive('/arpa')" src="assets/selezione-icona.png" alt="Seleccionado" class="selected-icon" />
+        <img src="assets/arpa-icona.png" alt="Profilo" class="main-icon" />
+      </span>
+    </button>
+  </div>
+</div>

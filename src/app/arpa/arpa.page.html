@@ -1,0 +1,184 @@
+<ion-content class="ion-padding">
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet">
+  <div class="page-container arpa-margin-top">
+    <section class="section-block">
+      <div class="cards-grid">
+        <img src="assets/arpa-logo.png" alt="ARPA Logo" class="arpa-logo">
+        <img src="assets/impostazioni.png" alt="Impostazioni" class="impostazioni-icon">
+
+        <div class="center-flex mb--10">
+          <ion-card class="custom-card first-recipe">
+          <ion-card-title class="arpa-title aggiorna-title">
+              Aggiorna Arpa!</ion-card-title>
+                <ion-card-content class="no-padding">
+                  <div class="img-text-container">
+                    <img src="assets/forma.png" alt="Condividi la tua ricetta"   class="centered-img" [style.height]="imgHeight" />
+                    <textarea class="centered-ingredient-text absolute-textarea" placeholder="Scrivici o inviaci una foto..." rows="3" [(ngModel)]="commenti" (input)="onInput($event)"></textarea>
+                  </div>
+                </ion-card-content>
+          </ion-card>
+        </div>
+
+        <div class="center-flex">
+          <ion-card class="custom-card">
+            <ion-card-title class="arpa-title faq-title">FAQ</ion-card-title>
+            <ion-card-content class="arpa-card-content faq-content">
+              <ion-accordion-group class="faq-accordion-group">
+                <ion-accordion class="faq-accordion">
+                  <ion-item slot="header" class="faq-header">
+                    <ion-label class="faq-label">Quali sono le piante idonee alla conservazione
+                      nella Banca del Germoplasma?</ion-label>
+                  </ion-item>
+                  <div class="ion-padding faq-content-text" slot="content">
+                    La Banca del Germoplasma rappresenta il modo migliore per salvaguardare dall’estinzione specie e
+                    varietà minacciate dalla scomparsa. Nel caso specifico la “Collezione Polvese” favorisce la
+                    conservazione ex-situ di semi appartenenti alla varietà orticole tipiche della regione Umbria. Ma
+                    non tutti i semi si possono conservare nelle Banche dei Semi: solo quelli che possono essere
+                    disidratati e conservati al freddo. Per questo Arpa Umbria oltre alla conservazione ex-situ,
+                    promuove anche la coltivazione on-farm.
+                  </div>
+                </ion-accordion>
+                <ion-accordion class="faq-accordion">
+                  <ion-item slot="header" class="faq-header">
+                    <ion-label class="faq-label">Cosa vuol dire: mantenere la purezza di una
+                      varietà?</ion-label>
+                  </ion-item>
+                  <div class="ion-padding faq-content-text" slot="content">
+                    Per mantenere la “purezza” di una varietà orticola bisogna evitare che durante la coltivazione le
+                    piante si ibridino, vengano cioè in contatto con altre piante dello stesso genere, ma di diversa
+                    varietà.
+                  </div>
+                </ion-accordion>
+                <ion-accordion class="faq-accordion">
+                  <ion-item slot="header" class="faq-header">
+                    <ion-label class="faq-label">Cosa significa: evitare
+                      l'ibridazione?</ion-label>
+                  </ion-item>
+                  <div class="ion-padding faq-content-text" slot="content">
+                    Salvaguardare l’agrobiodiversità locale significa anche che i semi conservati nella Banca del
+                    Germoplasma mantengano nel tempo le caratteristiche genetiche tipiche della varietà. A tal fine è
+                    necessario che durante la coltivazione le piante siano protette dall’ibridazione casuale, adottando
+                    una giusta distanza da varietà affini o l’isolamento fisico della pianta e/o dei fiori.
+                  </div>
+                </ion-accordion>
+                <ion-accordion class="faq-accordion">
+                  <ion-item slot="header" class="faq-header">
+                    <ion-label class="faq-label">Quali sono le giuste distanze?</ion-label>
+                  </ion-item>
+                  <div class="ion-padding faq-content-text" slot="content">
+                    <p class="faq-table-desc">Per garantire la purezza varietale e prevenire l'ibridazione indesiderata, è fondamentale
+                      mantenere le giuste distanze tra le colture. Le distanze raccomandate variano a seconda della
+                      specie:</p>
+                    <br>
+                    <table class="faq-table">
+                      <thead>
+                        <tr>
+                          <th>Specie</th>
+                          <th>Distanza (m.)</th>
+                          <th>Specie</th>
+                          <th>Distanza (m.)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Basilico</td>
+                          <td>250</td>
+                          <td>Mais</td>
+                          <td>500</td>
+                        </tr>
+                        <tr>
+                          <td>Cavolo</td>
+                          <td>250</td>
+                          <td>Melanzana</td>
+                          <td>250</td>
+                        </tr>
+                        <tr>
+                          <td>Cocomero</td>
+                          <td>250</td>
+                          <td>Melone</td>
+                          <td>500</td>
+                        </tr>
+                        <tr>
+                          <td>Fagiolina</td>
+                          <td>5</td>
+                          <td>Peperoncino</td>
+                          <td>5</td>
+                        </tr>
+                        <tr>
+                          <td>Fagiolo</td>
+                          <td>20</td>
+                          <td>Peperoni</td>
+                          <td>250</td>
+                        </tr>
+                        <tr>
+                          <td>Fave</td>
+                          <td>20</td>
+                          <td>Pomodoro</td>
+                          <td>5</td>
+                        </tr>
+                        <tr>
+                          <td>Finocchio</td>
+                          <td>250</td>
+                          <td>Rapi</td>
+                          <td>600</td>
+                        </tr>
+                        <tr>
+                          <td>Insalata</td>
+                          <td>5</td>
+                          <td>Zucca</td>
+                          <td>250</td>
+                        </tr>
+                        <tr>
+                          <td>Lenticchie</td>
+                          <td>5</td>
+                          <td>Zucchine</td>
+                          <td>250</td>
+                        </tr>
+                        <tr>
+                          <td>Lupinella</td>
+                          <td>1000</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                  </div>
+                </ion-accordion>
+                <ion-accordion class="faq-accordion">
+                  <ion-item slot="header" class="faq-header">
+                    <ion-label class="faq-label">Come si conservano in maniera corretta i
+                      semi?</ion-label>
+                  </ion-item>
+                  <div class="ion-padding faq-content-text" slot="content">
+                    Per la corretta essiccazione e conservazione i semi vanno puliti, privati del materiale vegetale
+                    quale foglie e steli, e liberati dal terriccio. Vanno rimossi i semi danneggiati e se ancora umidi,
+                    vanno lasciati asciugare su carta assorbente, in luogo areato e lontano dalla luce diretta del sole
+                    (Temperatura 5°C-Umidità 25%). Non utilizzare carta o fogli di giornale che possono contenere
+                    sostanze chimiche e coloranti. I semi seccati vanno riposti in un contenitore pulito, ad esempio un
+                    barattolo di vetro a tenuta stagna, etichettato con il nome della varietà e l’anno di coltivazione.
+                    Il contenitore va riposto al buio in luogo fresco e asciutto.
+                  </div>
+                </ion-accordion>
+                <ion-accordion class="faq-accordion">
+                  <ion-item slot="header" class="faq-header">
+                    <ion-label class="faq-label">Da quali frutti vanno raccolti i
+                      semi?</ion-label>
+                  </ion-item>
+                  <div class="ion-padding faq-content-text" slot="content">
+                    I semi vanno raccolti dai frutti maturi delle piante più sane, vigorose e che presentano le
+                    caratteristiche tipiche della varietà. Non vanno assolutamente selezionati i frutti danneggiati o
+                    malati. Raccogliere frutti dal maggior un numero di piante disponibili al fine di ottenere un dato
+                    medio e rappresentativo della varietà in coltivazione.
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</ion-content>

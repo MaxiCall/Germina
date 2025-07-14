@@ -1,0 +1,69 @@
+.card-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.no-padding { padding: 0; margin: 0; }
+
+.seed-buttons-row {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  text-align: left;
+  margin-right: 90px;
+  margin-left: 22px;
+}
+.seed-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 100%;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.seed-icon-btn img {
+  width: 55px;
+  height: 55px;
+}
+.custom-card {
+  background: #1d3105 !important;
+  border-radius: 38px;
+  color: #fff9de;
+  font-family: 'Gaegu', cursive;
+  width: 400px;
+  max-width: 400px;
+  margin: 0 0 20px 0;
+}
+
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.custom-card ion-card-title {
+  font-family: 'Gaegu', cursive;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-align: left !important;
+  margin-left: 28px;
+  color: #fff9de ;
+  margin-top: 18px;
+}
+.custom-card ion-card-content img.seed-img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 22px 22px;
+  border: none;
+  margin: 0;
+  box-shadow: none;
+}

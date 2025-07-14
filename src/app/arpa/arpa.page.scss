@@ -1,0 +1,412 @@
+// --- ARPA PAGE CLASSES ---
+.arpa-margin-top {
+  margin-top: 110px;
+}
+
+
+.arpa-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 250px;
+  height: auto;
+}
+
+.impostazioni-icon {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  width: 65px;
+  height: auto;
+}
+
+.center-flex {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mb--10 {
+  margin-bottom: -10px;
+}
+
+.arpa-title {
+  display: block;
+  font-family: 'Gaegu', cursive;
+  color: #fff9de;
+  font-weight: 700;
+
+  
+}
+
+.aggiorna-title {
+  margin-left: 30px !important;
+  margin-bottom: -10px;
+  margin-top: 10px;
+  font-size: 2.2em;
+   font-size: 2.3em !important;
+}
+
+.faq-title {
+  margin-top: 18px;
+  margin-left: 25px !important;
+  font-size: 2em;
+}
+
+.arpa-card-content {
+  padding: 0;
+  margin: 0;
+}
+
+.faq-content {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.forma-img {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: -2px;
+}
+
+.aggiorna-span {
+  margin-left: -40px;
+}
+
+.faq-accordion-group {
+  background-color: #1d3105;
+}
+
+.faq-accordion {
+  --background: #1d3105;
+  color: #fff9de;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+}
+
+.faq-header {
+  --background: #1d3105;
+  font-size: 1.4em;
+  width: 100%;
+  font-weight: normal;
+  padding-left: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.faq-label {
+  width: 100%;
+  font-weight: normal;
+  color: #fff9de;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.faq-content-text {
+  padding-left: 28px;
+  font-size: 1.2em;
+}
+
+.faq-table-desc {
+  padding-left: 28px;
+  font-size: 1.2em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.faq-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.faq-table th,
+.faq-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.faq-table th {
+  padding: 5px;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers vertically */
+  align-items: center;     /* Centers horizontally */
+  height: 100%;            /* Essential for vertical centering within ion-content */
+  text-align: center;      /* Ensures text alignment */
+
+  img {
+    max-width: 250px;       /* Adjust size as needed for your logo */
+    margin-bottom: 20px;    /* Space between logo and text */
+  }
+
+  .working-text {
+    font-size: 1.2em;       /* Adjust font size as needed */
+    color: #1d3105;         /* Apply your specified color */
+    font-weight: bold;      /* Optional: Make the text bold */
+  }
+}
+.custom-card {
+  background: #1d3105 !important;
+  border-radius: 38px;
+  color: #fff9de;
+  font-family: 'Gaegu', cursive;
+  width: 400px;
+  max-width: 400px;  // ✅ Arreglado
+  margin: 0 0 32px 0; // Margen solo abajo
+  box-shadow: 0 0 32px 0 #0002;
+}
+
+.custom-card.first-recipe {
+  background: #b6572c !important;
+}
+
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-bottom: 90px;
+}
+
+.custom-card ion-card-title {
+  font-family: 'Gaegu', cursive;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-align: left !important;
+ margin-left: 15px;
+}
+
+
+
+y
+.seed-author {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  color: #fff9de;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.seed-icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 100%;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seed-icon-btn img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.seed-buttons-row img[alt="Me gusta"],
+.seed-buttons-row img[alt="Comentario"] {
+  width: 26px !important;
+  height: 26px !important;
+}
+.seed-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+}
+
+.seed-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 0 20px 20px;
+}
+
+/* Alineación izquierda */
+.seed-buttons-container.aligned-left {
+  justify-content: flex-start;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.seed-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Esto alinea Ricetta + íconos a la izquierda */
+  margin-top: 19px;
+}
+
+.seed-author {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  color: #fff9de;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.icon-row {
+  display: flex;
+  align-items: right;
+  margin-right: 50px;
+}
+
+.icon-row img {
+  width: 50px;
+  height: 50px;
+  margin-top: -18px;
+}
+
+.icon-text {
+  font-family: 'Gaegu', cursive;
+  font-size: 0.5em;
+  color: #fff9de;
+}
+
+.centered-ingredient-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+  color: #b6572c;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.absolute-textarea {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  min-height: 60px;
+  max-height: 300px;
+  text-align: center;
+  color: #b6572c;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0 10px;
+}
+
+ion-accordion {
+  background-color: #1d3105 !important;
+  color: #fff9de;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Asegúrate de que el textarea tenga el mismo padding y text-align */
+.absolute-textarea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: transparent;
+  width: 30%; /* Considera ajustar este ancho o usar max-width */
+  min-height: calc(1.3em * 4 + 90px);
+  max-width: 350px;
+  color: #b6572c !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1em;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  box-shadow: none;
+  text-align: left !important; /* Asegúrate de que el texto del input se alinee igual */
+  resize: none;
+  /* IMPORTANTE: Unifica el padding. Por ejemplo, si quieres un padding de 20px arriba y 12px horizontal */
+  padding: 20px 12px 10px 12px; /* Top, Right, Bottom, Left. Ajusta a tu gusto */
+  height: calc(1.3em * 4 + 10px); /* Esto se verá afectado por el padding, quizás necesites recalcular */
+  max-height: calc(1.3em * 4 + 40px);
+  overflow-y: scroll;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #fff9de #1d3105;
+}
+
+/* Y que el placeholder tenga EXACTAMENTE el mismo text-align y padding */
+.absolute-textarea::placeholder {
+  color: #b6572c !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-style: italic;
+  opacity: 1;
+  text-align: left !important;
+  white-space: nowrap;
+  display: block;
+}
+
+/* También tienes esta regla para el placeholder que puede entrar en conflicto */
+.centered-ingredient-text::placeholder {
+  color: #fff9decc; /* Este color es diferente al de .absolute-textarea::placeholder */
+  font-family: 'Gaegu', cursive; /* Esta fuente es diferente */
+  font-size: 1.1em;
+  font-weight: 400;
+  opacity: 1;
+}
+
+/* Si .centered-ingredient-text es también tu textarea, consolida los estilos.
+   Si es otro elemento, asegúrate de que no haya conflicto con .absolute-textarea.
+   Asumiré que quieres que .absolute-textarea sea el principal */
+.centered-ingredient-text {
+  /* Mantén esto si es para el mismo textarea, pero consolida con absolute-textarea */
+  display: block;
+  width: 90%;
+  margin: 0 auto 10px auto;
+  font-family: 'Gaegu', cursive;
+  color: #fff9de;
+  font-size: 1.3em;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  resize: none;
+  outline: none;
+  /* Aquí también deberías tener un padding que coincida con el placeholder */
+  padding: 20px 12px 10px 12px; /* Mismo padding que en .absolute-textarea */
+  min-height: 48px;
+  max-width: 350px;
+  box-shadow: none;
+  text-align: left; /* O el que desees, pero que coincida con el placeholder */
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Asegúrate de que esta regla también tenga el text-align deseado */
+.absolute-textarea:focus::placeholder {
+  color: transparent !important;
+}
+
+.centered-img {
+  display: block;
+  position: relative;
+  margin-left: -15px !important;
+  width: 99%;
+  max-width: 400px;
+  min-width: 400px;
+  margin-top: -30px;
+  margin-bottom: 0px;
+  z-index: 1;
+}

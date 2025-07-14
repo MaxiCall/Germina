@@ -1,0 +1,105 @@
+.bottom-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1002;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background: #697f42 !important; /* ← Cambiado a #1d3105 */
+  padding: 0;
+  transition: background 0.2s;
+}
+
+.bottom-menu button,
+.bottom-menu ion-button {
+  flex: 1 1 0;
+  margin: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.15em;
+  font-weight: 600;
+
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  height: 100%;
+  letter-spacing: 0.01em;
+}
+
+
+// Eliminar sombreado de fondo del botón activo
+.bottom-menu button.active,
+.bottom-menu ion-button.active {
+  background: none;
+  color: #fff;
+}
+
+/* Estilos migrados desde app.component.html */
+.ion-page#main-content {
+  color: #fff9de;
+}
+
+.bottom-menu {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 95px;
+  align-items: flex-start;
+  color: #fff9de;
+}
+
+.menu-btn {
+  position: relative;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.menu-btn-span {
+  display: block;
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+}
+
+.selected-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.main-icon {
+  width: 90px;
+  height: 90px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.bottom-menu ion-icon {
+  font-size: 1.7em;
+  margin-bottom: 2px;
+}
+
+.bottom-menu div {
+  font-size: 0.93em;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+ion-content .inner-scroll {
+  background: #fff9de !important;
+  padding-bottom: 100px; /* Altura del menú inferior */
+}

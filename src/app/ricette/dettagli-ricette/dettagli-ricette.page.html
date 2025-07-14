@@ -1,0 +1,57 @@
+<ion-content class="ion-padding">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <div class="page-container">
+    <section class="section-block">
+      <div class="cards-grid">
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <ion-card class="custom-card">
+            <ion-card-title class="custom-title-recipe">
+              {{ ricetta?.name }}
+            </ion-card-title>
+            <ion-card-content class="no-padding">
+              <img [src]="ricetta?.imageUrl" class="img-seed-img wide-img" [alt]="ricetta?.name" />
+              <div class="seed-buttons-container aligned-left">
+                <img [src]="ricetta?.autore?.image" class="author-avatar clickable" [alt]="ricetta?.autore?.name"
+               (click)="navigateTo('/mappa'); $event.stopPropagation()" />
+                <div class="seed-info">
+                  <span class="seed-author">Ricetta di {{ ricetta?.autore?.name }}</span>
+                  <div class="icon-row left-margin">
+                    <img src="assets/icona-cuore1.png" alt="Me gusta" />
+                    <img src="assets/icone-commento1.png" alt="Comentario" class="comment-icon" />
+                  </div>
+                </div>
+              </div>
+              <div class="technical-banner-wrapper">
+                <img src="assets/banner-2.png" alt="Banner tecnico" class="banner-background-image"
+                  style="width: 140%;">
+                <div class="banner-content-overlay">
+                  <ion-card-title class="scheda-tecnica-title">
+                    Ingredienti
+                  </ion-card-title>
+                  <div class="ingredients-grid-container">
+                    <div *ngFor="let ingrediente of ricetta?.ingredienti" class="ingredient-item">
+                      <img src="assets/foglietta.png" alt="Icono Hoja" class="foglietta-image-small">
+                      <p class="ingredient-text">
+                        {{ ingrediente }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="procedure-section">
+                <ion-card-title class="procedure-title">
+                  Procedimento
+                </ion-card-title>
+                <div class="procedure-content">
+                  <p class="procedure-text">
+                    {{ ricetta?.preparazione }}
+                  </p>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</ion-content>

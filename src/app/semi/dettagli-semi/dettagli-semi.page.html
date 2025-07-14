@@ -1,0 +1,49 @@
+<ion-content class="ion-padding">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <div class="page-container">
+    <section class="section-block">
+      <div class="cards-grid">
+        <div class="dettagli-card-row">
+          <ion-card class="custom-card dettagli-min-height">
+            <ion-card-title class="dettagli-title">
+              {{ semilla?.name }}
+            </ion-card-title>
+            <ion-card-content class="no-padding">
+              <img [src]="semilla?.imageUrl" [alt]="semilla?.name || 'seme'" class="seed-img seed-img-wide seed-img-ml" />
+              <div *ngIf="semilla?.cultivators?.length > 0" class="dettagli-cultivators">
+                <div *ngFor="let cultivator of semilla.cultivators" class="dettagli-cultivator-item">
+                  <img [src]="cultivator.image" [alt]="cultivator.name" class="dettagli-cultivator-img"
+                   (click)="$event.stopPropagation(); navigateTo('/mappa')">
+                  <span class="dettagli-cultivator-text">
+                    Coltivato da {{ cultivator.name }}
+                  </span>
+                </div>
+                <div *ngIf="semilla?.hasRicette" class="dettagli-ricette-btn">
+                  <img src="assets/ricetta-icon.png" alt="Ricette" class="dettagli-ricette-img"
+                    (click)="navigateTo('/ricette')" />
+                  <span class="dettagli-ricette-text">
+                    Vedi le ricette
+                  </span>
+                </div>
+              </div>
+            </ion-card-content>
+            <div class="dettagli-banner-wrapper">
+              <img src="assets/banner-1.png" alt="Banner tecnico" class="dettagli-banner-img" />
+              <div class="dettagli-banner-overlay">
+                <ion-card-title class="dettagli-banner-title">Scheda tecnica</ion-card-title>
+                <div class="dettagli-banner-row">
+                  <img src="assets/foglietta.png" alt="Foglietta" class="foglietta-banner" />
+                  <div class="dettagli-banner-value">AVVICENDAMENTO: {{ semilla?.schedaTecnica?.avvicendamento || '—' }}</div>
+                </div>
+                <div class="dettagli-banner-row">
+                  <img src="assets/foglietta.png" alt="Foglietta" class="foglietta-banner" />
+                  <div class="dettagli-banner-value dettagli-banner-value-prep">PREPARAZIONE DEL TERRENO: {{semilla?.preparazioneTerreno?.preparazioneTerreno || '—' }}</div>
+                </div>
+              </div>
+            </div>
+          </ion-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</ion-content>

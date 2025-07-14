@@ -1,0 +1,56 @@
+<ion-content class="ion-padding">
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <div class="page-container">
+    <section class="section-block">
+      <div class="cards-grid">
+<div class="centered-flex">
+  <ion-card class="custom-card first-recipe">
+    <ion-card-title class="custom-title">Condividi la tua ricetta!</ion-card-title>
+    <ion-card-content class="no-padding">
+      <div class="img-text-container">
+        <img src="assets/forma.png" alt="Condividi la tua ricetta" class="centered-img" [style.height]="imgHeight" />
+        <textarea class="centered-ingredient-text absolute-textarea" placeholder="Scrivi la tua lista di ingredienti..." rows="3" [(ngModel)]="ingredienti" (input)="onInput($event)"></textarea>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
+<div class="centered-flex">
+  <ion-card class="custom-card" (click)="goToDettagliRicette('zuppa-di-fagioli-americani')">
+    <ion-card-title class="custom-title-recipe">Zuppa di fagioli americani</ion-card-title>
+    <ion-card-content class="no-padding">
+      <img src="assets/semi4.png" class="img-seed-img wide-img" alt="Zuppa di fagioli americani" />
+      <div class="seed-buttons-container aligned-left">
+        <img src="assets/farmer-4.png" class="author-avatar clickable" alt="Farmer" (click)="navigateTo('/mappa'); $event.stopPropagation()" />
+        <div class="seed-info">
+          <span class="seed-author">Ricetta di Antonietta</span>
+          <div class="icon-row left-margin">
+            <img src="assets/icona-cuore1.png" alt="Me gusta" />
+            <img src="assets/icone-commento1.png" alt="Comentario" class="comment-icon" />
+          </div>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
+<div class="centered-flex">
+  <ion-card class="custom-card" (click)="goToDettagliRicette('zuppa-di-fagioli-americani2')">
+    <ion-card-title class="custom-title-recipe">Zuppa di fagioli americani</ion-card-title>
+    <ion-card-content class="no-padding">
+      <img src="assets/semi5.png" class="img-seed-img wide-img" alt="Zuppa di fagioli americani" />
+      <div class="seed-buttons-container aligned-left">
+        <img src="assets/farmer-1.png" class="author-avatar clickable" alt="Farmer" (click)="navigateTo('/mappa'); $event.stopPropagation()" />
+        <div class="seed-info">
+          <span class="seed-author">Ricetta di Ugo</span>
+          <div class="icon-row left-margin">
+            <img src="assets/icona-cuore.png" alt="Me gusta" />
+            <img src="assets/icone-commento.png" alt="Comentario" class="comment-icon" />
+          </div>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</div>
+      </div>
+    </section>
+  </div>
+</ion-content>

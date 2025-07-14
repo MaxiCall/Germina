@@ -1,0 +1,305 @@
+.absolute-textarea:focus::placeholder {
+  color: transparent !important;
+}
+
+/* Y que el placeholder tenga EXACTAMENTE el mismo text-align y padding */
+.absolute-textarea::placeholder {
+  color: #b6572c !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-style: italic;
+
+
+  opacity: 1;
+  text-align: left !important;
+  white-space: nowrap;
+  display: block;
+}
+
+.custom-card {
+  //si
+  background: #1d3105 !important;
+  border-radius: 38px;
+  width: 400px;
+  margin: 0 0 20px 0; // Margen solo abajo
+}
+
+.custom-card.first-recipe {
+  //si
+  background: #b6572c !important;
+}
+
+ion-content {
+  //si
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-bottom: 90px;
+}
+
+.custom-card ion-card-title {
+  //si
+  font-family: 'Gaegu', cursive;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-align: left !important;
+  margin-left: 15px;
+  margin-bottom: -10px;
+}
+
+
+
+.img-seed-img.wide-img {
+  //si
+  width: 100%;
+  max-width: 430px;
+  margin: -30px 0 -30px -2%;
+}
+
+
+.seed-author {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  color: #fff9de;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+
+.seed-buttons-row img[alt="Me gusta"],
+.seed-buttons-row img[alt="Comentario"] {
+  //si
+  width: 26px !important;
+  height: 26px !important;
+}
+
+.seed-buttons-container {
+  //si
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+/* Estilos migrados desde ricette.page.html */
+.centered-flex {
+  //si
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.centered-ingredient-text {
+  display: block;
+  width: 90%;
+  margin: 0 auto 10px auto;
+  font-family: 'Gaegu', cursive;
+  color: #fff9de;
+  font-size: 1.3em;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  resize: none;
+  outline: none;
+  padding: 28px 12px 10px 12px;
+  min-height: 48px;
+  max-width: 350px;
+  box-shadow: none;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* También tienes esta regla para el placeholder que puede entrar en conflicto */
+.centered-ingredient-text::placeholder {
+  color: #fff9decc;
+  /* Este color es diferente al de .absolute-textarea::placeholder */
+  font-family: 'Gaegu', cursive;
+  /* Esta fuente es diferente */
+  font-size: 1.1em;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.custom-title {
+  //si
+  display: block;
+  margin-top: 18px;
+  font-family: 'Gaegu', cursive;
+  color: #fff9de;
+  font-size: 2.3em !important;
+  font-weight: 700;
+}
+
+.custom-title-recipe {
+  //si
+  color: #fff9de !important;
+  margin: 20px 0 10px 25px !important;
+  font-size: 2em !important;
+}
+
+.no-padding {
+  //si
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.centered-img {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 18px;
+  z-index: 1;
+}
+
+.img-text-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  overflow: hidden;
+}
+
+.ingredienti-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #b6572c;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  text-align: left;
+  pointer-events: none;
+  width: 80%;
+  z-index: 2;
+  white-space: pre-line;
+  opacity: 0.95;
+}
+
+.absolute-textarea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  background: transparent;
+  width: 30%;
+  /* Considera ajustar este ancho o usar max-width */
+  min-height: calc(1.3em * 4 + 90px);
+  max-width: 350px;
+  color: #b6572c !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1em;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  box-shadow: none;
+  text-align: left !important;
+  /* Asegúrate de que el texto del input se alinee igual */
+  resize: none;
+  /* IMPORTANTE: Unifica el padding. Por ejemplo, si quieres un padding de 20px arriba y 12px horizontal */
+  padding: 8px 12px 10px 12px;
+  /* Top, Right, Bottom, Left. Menos espacio arriba */
+  height: calc(1.3em * 4);
+  /* Ajuste para compensar el nuevo padding */
+  max-height: calc(1.3em * 4 + 40px);
+  overflow-y: scroll;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #fff9de #1d3105;
+}
+
+.author-avatar.clickable {
+  //si
+  cursor: pointer;
+}
+
+.icon-row.left-margin {
+  //si
+  margin-left: -7px;
+}
+
+.comment-icon {
+  //si
+  margin-left: -9px;
+}
+
+.seed-buttons-container {
+  //si
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 0 20px 20px;
+  justify-content: flex-start;
+  margin-left: 5px;
+}
+
+.author-avatar {
+  //si
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.seed-info {
+  //si
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Esto alinea Ricetta + íconos a la izquierda */
+  margin-top: 19px;
+}
+
+.seed-author {
+  //si
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1.2em;
+  color: #fff9de;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.icon-row {
+  //si
+  display: flex;
+  align-items: right;
+  margin-right: 50px;
+}
+
+.icon-row img {
+  //si
+  width: 50px;
+  height: 50px;
+  margin-top: -18px;
+}
+
+
+.centered-ingredient-text {
+  /* Mantén esto si es para el mismo textarea, pero consolida con absolute-textarea */
+  display: block;
+  width: 90%;
+  margin: 0 auto 10px auto;
+  font-family: 'Gaegu', cursive;
+  color: #fff9de;
+  font-size: 1.3em;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  resize: none;
+  outline: none;
+  /* Aquí también deberías tener un padding que coincida con el placeholder */
+  padding: 20px 12px 10px 12px;
+  /* Mismo padding que en .absolute-textarea */
+  min-height: 48px;
+  max-width: 350px;
+  box-shadow: none;
+  text-align: left;
+  /* O el que desees, pero que coincida con el placeholder */
+  transition: background 0.2s, color 0.2s;
+}
