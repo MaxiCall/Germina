@@ -13,7 +13,12 @@
       </ion-card-content>
     </ion-card>
   </div>
-  <div #map id="map" class="mappa-map"></div>
+  <div class="map-container">
+    <div #map id="map" class="mappa-map"></div>
+    <button class="location-btn" (click)="goToUserLocation()">
+      <img src="assets/map-icon-1.png" alt="Mi ubicación" />
+    </button>
+  </div>
   <div class="mappa-footer">
     <ion-card class="custom-card semi-card">
       <ion-card-content class="no-padding">

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent } from '@ionic/angular/standalone';
+import { IonContent, ToastController } from '@ionic/angular/standalone';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -37,6 +37,7 @@ export class MappaPage implements OnInit, AfterViewInit {
   infoWindow: any;
   userMarker: google.maps.Marker | null = null;
   activeFarmerId: string | null = null;
+  private static animationsPlayed: boolean = false;
   variedades: Semilla[] = [
     { id: 'fagiolino-verde-nano', name: 'Fagiolino verde nano', type: 'Fagioli', imageUrl: 'assets/seed-icon1.png', lat: 43.140, lng: 12.250 },
     { id: 'favino', name: 'Favino', type: 'Favino', imageUrl: 'assets/seed-icon2.png', lat: 43.135, lng: 12.260 },
@@ -57,14 +58,13 @@ export class MappaPage implements OnInit, AfterViewInit {
   ];
   private filterType: string | null = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private zone: NgZone) { }
+  constructor(private route: ActivatedRoute, private router: Router, private zone: NgZone, private toastController: ToastController) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.filterType = params['filterType'] || null;
       this.activeFarmerId = params['activeFarmer'] || null;
       this.loadMap(this.filterType);
-      this.getCurrentPosition();
     });
   }
 
@@ -72,9 +72,6 @@ export class MappaPage implements OnInit, AfterViewInit {
     setTimeout(() => {
       if (this.mapElement && this.mapElement.nativeElement) {
         this.loadMap(this.filterType);
-        this.getCurrentPosition();
-      } else {
-        console.error('El elemento del mapa no está disponible en ngAfterViewInit');
       }
     }, 100);
   }
@@ -95,13 +92,9 @@ export class MappaPage implements OnInit, AfterViewInit {
         (position) => {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
-          this.addUserMarker(lat, lng);
+          this.addUserMarker(lat, lng, false);
         },
         (error) => {
-          console.error('❌ Error al obtener la posición actual:', error);
-          console.error('Código de error:', error.code);
-          console.error('Mensaje de error:', error.message);
-          console.log('Intentando con opciones básicas...');
           const basicOptions = {
             enableHighAccuracy: false,
             timeout: 15000,
@@ -111,7 +104,7 @@ export class MappaPage implements OnInit, AfterViewInit {
             (position) => {
               const lat = position.coords.latitude;
               const lng = position.coords.longitude;
-              this.addUserMarker(lat, lng);
+              this.addUserMarker(lat, lng, false);
             },
 
           );
@@ -119,8 +112,7 @@ export class MappaPage implements OnInit, AfterViewInit {
         options
       );
     } else {
-      console.error('La geolocalización no está soportada por este navegador.');
-      this.addUserMarker(43.13, 12.25);
+      this.addUserMarker(43.13, 12.25, false);
     }
   }
 
@@ -176,7 +168,6 @@ export class MappaPage implements OnInit, AfterViewInit {
     const initialZoom = 10;
 
     if (!this.mapElement?.nativeElement || typeof google === 'undefined' || typeof google.maps === 'undefined') {
-      console.error('Google Maps API o elemento del mapa no están disponibles.');
       return;
     }
 
@@ -197,20 +188,6 @@ export class MappaPage implements OnInit, AfterViewInit {
 
     this.addMarkers(seedsToDisplay, this.activeFarmerId, markerMap);
 
-    if (this.activeFarmerId) {
-      const seed = this.variedades.find(s => s.id === this.activeFarmerId);
-      if (seed) {
-        const marker = markerMap[this.activeFarmerId];
-        if (marker) {
-          this.openPopup(seed, marker);
-        } else {
-          console.warn(`No se encontró marcador para activeFarmerId: ${this.activeFarmerId}`);
-        }
-      } else {
-        console.warn(`No se encontró semilla para activeFarmerId: ${this.activeFarmerId}`);
-      }
-    }
-
     this.map.addListener('click', () => {
       if (this.infoWindow) {
         this.infoWindow.close();
@@ -219,34 +196,54 @@ export class MappaPage implements OnInit, AfterViewInit {
   }
 
   addMarkers(seeds: Semilla[], activeFarmerId: string | null, markerMap: { [id: string]: google.maps.Marker }) {
-    seeds.forEach(seed => {
+    const shouldAnimate = !MappaPage.animationsPlayed;
+    
+    seeds.forEach((seed, index) => {
       const iconUrl = (seed.type === 'Contadino' || seed.type === 'Contadina')
         ? 'assets/map-icon-3.png'
         : 'assets/map-icon-2.png';
 
-      const marker = new google.maps.Marker({
-        position: { lat: seed.lat, lng: seed.lng },
-        map: this.map,
-        title: seed.name,
-        icon: {
-          url: iconUrl,
-          scaledSize: new google.maps.Size(38, 38),
-          anchor: new google.maps.Point(19, 38)
-        },
-        animation: google.maps.Animation.DROP
-      });
+      const delay = shouldAnimate ? index * 100 : 0;
+      
+      setTimeout(() => {
+        const marker = new google.maps.Marker({
+          position: { lat: seed.lat, lng: seed.lng },
+          map: this.map,
+          title: seed.name,
+          icon: {
+            url: iconUrl,
+            scaledSize: new google.maps.Size(38, 38),
+            anchor: new google.maps.Point(19, 38)
+          },
+          animation: shouldAnimate ? google.maps.Animation.DROP : null
+        });
 
-      markerMap[seed.id] = marker;
+        markerMap[seed.id] = marker;
 
-      marker.addListener('click', () => {
-        this.openPopup(seed, marker);
-      });
+        marker.addListener('click', () => {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+          setTimeout(() => {
+            marker.setAnimation(null);
+          }, 1400);
+          
+          this.openPopup(seed, marker);
+        });
+
+        if (activeFarmerId && seed.id === activeFarmerId) {
+          setTimeout(() => {
+            this.openPopup(seed, marker);
+          }, 200);
+        }
+      }, delay);
     });
+    
+    if (shouldAnimate) {
+      MappaPage.animationsPlayed = true;
+    }
   }
 
-  addUserMarker(lat: number, lng: number) {
+  addUserMarker(lat: number, lng: number, centerMap: boolean = false) {
     if (!this.map) {
-      console.error('ADDUSER: El mapa no está disponible');
       return;
     }
 
@@ -254,6 +251,7 @@ export class MappaPage implements OnInit, AfterViewInit {
       this.userMarker.setMap(null);
     }
 
+    const shouldAnimate = !MappaPage.animationsPlayed;
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     try {
       this.userMarker = new google.maps.Marker({
@@ -265,16 +263,84 @@ export class MappaPage implements OnInit, AfterViewInit {
           scaledSize: new google.maps.Size(38, 38),
           anchor: new google.maps.Point(19, 38)
         },
-        animation: google.maps.Animation.DROP
+        animation: shouldAnimate ? google.maps.Animation.DROP : null
       });
 
-      if (this.userMarker && this.userMarker.getMap()) {
-        console.log('ADDUSER: ✅ Marcador añadido al mapa correctamente');
-      } else {
-        console.error('ADDUSER: ❌ El marcador no se añadió al mapa');
+      if (centerMap) {
+        this.map.setCenter({ lat, lng });
+        this.map.setZoom(13);
       }
     } catch (error) {
-      console.error('ADDUSER: ❌ Error al añadir el marcador:', error);
     }
+  }
+
+  goToUserLocation() {
+    if (!this.map) {
+      return;
+    }
+
+    if (this.userMarker && this.userMarker.getPosition()) {
+      const position = this.userMarker.getPosition();
+      if (position) {
+        this.map.setCenter(position);
+        this.map.setZoom(15);
+        this.userMarker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(() => {
+          if (this.userMarker) {
+            this.userMarker.setAnimation(null);
+          }
+        }, 2000);
+      }
+    } else {
+      this.requestUserLocation(true);
+    }
+  }
+
+  private requestUserLocation(centerMap: boolean = false) {
+    if (!navigator.geolocation) {
+      this.showToast('La geolocalización no está soportada por este navegador.');
+      return;
+    }
+
+    const options = {
+      enableHighAccuracy: false,
+      timeout: 10000,
+      maximumAge: 300000
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        this.addUserMarker(lat, lng, centerMap);
+      },
+      (error) => {
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            this.showToast('Permiso de ubicación denegado. Por favor, permite el acceso a tu ubicación en la configuración del navegador.');
+            break;
+          case error.POSITION_UNAVAILABLE:
+            this.showToast('La información de ubicación no está disponible.');
+            break;
+          case error.TIMEOUT:
+            this.showToast('La solicitud de ubicación ha expirado. Inténtalo de nuevo.');
+            break;
+          default:
+            this.showToast('Ha ocurrido un error desconocido al obtener tu ubicación.');
+            break;
+        }
+      },
+      options
+    );
+  }
+
+  private async showToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 4000,
+      position: 'top',
+      color: 'warning'
+    });
+    toast.present();
   }
 }

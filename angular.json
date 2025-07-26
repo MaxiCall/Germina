@@ -87,7 +87,7 @@
             "host": "0.0.0.0",
             "allowedHosts": [
               "localhost",
-              "eff87cfe38eb.ngrok-free.app"
+              "03a97fdd4920.ngrok-free.app"
             ]
           },
           "configurations": {
