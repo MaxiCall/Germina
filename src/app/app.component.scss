@@ -8,7 +8,6 @@
   justify-content: space-between;
   align-items: stretch;
   background: #697f42 !important;
-  /* ← Cambiado a #1d3105 */
   padding: 0;
   transition: background 0.2s;
 }
@@ -32,15 +31,12 @@
   letter-spacing: 0.01em;
 }
 
-
-// Eliminar sombreado de fondo del botón activo
 .bottom-menu button.active,
 .bottom-menu ion-button.active {
   background: none;
   color: #fff;
 }
 
-/* Estilos migrados desde app.component.html */
 .ion-page#main-content {
   color: #fff9de;
 }
@@ -105,7 +101,6 @@
 ion-content .inner-scroll {
   background: #fff9de !important;
   padding-bottom: 100px;
-  /* Altura del menú inferior */
 }
 
 @media (min-width: 376px) and (max-width: 393px) {

@@ -13,14 +13,15 @@ export interface Semilla {
   lat: number;
   lng: number;
 }
+
 declare const google: any;
 
-// Extiende la interfaz Window para evitar error de tipo en __maps_reload
 declare global {
   interface Window {
     __maps_reload?: boolean;
   }
 }
+
 @Component({
   selector: 'app-mappa',
   templateUrl: './mappa.page.html',
@@ -29,14 +30,13 @@ declare global {
   imports: [IonContent, CommonModule, FormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class MappaPage implements OnInit, AfterViewInit {
   @ViewChild('map', { static: false }) mapElement!: ElementRef;
   map: any;
   infoWindow: any;
-  userMarker: google.maps.Marker | null = null; // Reintroducir la propiedad userMarker
+  userMarker: google.maps.Marker | null = null;
   activeFarmerId: string | null = null;
-  private isMapInitialized = false;
-
   variedades: Semilla[] = [
     { id: 'fagiolino-verde-nano', name: 'Fagiolino verde nano', type: 'Fagioli', imageUrl: 'assets/seed-icon1.png', lat: 43.140, lng: 12.250 },
     { id: 'favino', name: 'Favino', type: 'Favino', imageUrl: 'assets/seed-icon2.png', lat: 43.135, lng: 12.260 },
@@ -63,20 +63,16 @@ export class MappaPage implements OnInit, AfterViewInit {
     this.route.queryParams.subscribe(params => {
       this.filterType = params['filterType'] || null;
       this.activeFarmerId = params['activeFarmer'] || null;
-
-      // Asegurar que el mapa se recargue siempre al acceder a la página
       this.loadMap(this.filterType);
       this.getCurrentPosition();
     });
   }
 
   ngAfterViewInit() {
-    // Asegurar que el elemento del mapa esté disponible antes de cargar
     setTimeout(() => {
       if (this.mapElement && this.mapElement.nativeElement) {
         this.loadMap(this.filterType);
         this.getCurrentPosition();
-        this.isMapInitialized = true;
       } else {
         console.error('El elemento del mapa no está disponible en ngAfterViewInit');
       }
@@ -84,21 +80,17 @@ export class MappaPage implements OnInit, AfterViewInit {
   }
 
   getCurrentPosition() {
-    // Verificar si el mapa está listo
     if (!this.map) {
       setTimeout(() => this.getCurrentPosition(), 1000);
       return;
     }
-    
+
     if (navigator.geolocation) {
-      
-      // Opciones más permisivas para móviles
       const options = {
-        enableHighAccuracy: false, // Cambiar a false para mejor compatibilidad móvil
-        timeout: 10000, // Aumentar timeout a 10 segundos
-        maximumAge: 300000 // Aceptar posiciones de hasta 5 minutos
+        enableHighAccuracy: false,
+        timeout: 10000,
+        maximumAge: 300000
       };
-      
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const lat = position.coords.latitude;
@@ -109,29 +101,25 @@ export class MappaPage implements OnInit, AfterViewInit {
           console.error('❌ Error al obtener la posición actual:', error);
           console.error('Código de error:', error.code);
           console.error('Mensaje de error:', error.message);
-          
-          // Intentar con opciones más básicas si falla
           console.log('Intentando con opciones básicas...');
           const basicOptions = {
             enableHighAccuracy: false,
             timeout: 15000,
             maximumAge: 600000
           };
-          
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const lat = position.coords.latitude;
               const lng = position.coords.longitude;
               this.addUserMarker(lat, lng);
             },
-        
+
           );
         },
         options
       );
     } else {
       console.error('La geolocalización no está soportada por este navegador.');
-      // Fallback para navegadores sin geolocalización
       this.addUserMarker(43.13, 12.25);
     }
   }
@@ -202,7 +190,6 @@ export class MappaPage implements OnInit, AfterViewInit {
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.infoWindow = new google.maps.InfoWindow();
-
     const markerMap: { [id: string]: google.maps.Marker } = {};
     const seedsToDisplay = filterType
       ? this.variedades.filter(seed => seed.type === filterType)

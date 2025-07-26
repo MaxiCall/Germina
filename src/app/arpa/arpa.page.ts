@@ -11,15 +11,13 @@ import { IonContent, IonLabel, IonItem, IonAccordion, IonAccordionGroup, IonCard
   imports: [IonContent, CommonModule, FormsModule, IonLabel, IonItem, IonAccordion, IonAccordionGroup, IonCardContent, IonCard, IonCardTitle]
 })
 export class ArpaPage implements OnInit {
-
   commenti: string = '';
   textareaHeight: number = 100;
-  maxHeight: number = 225; // Límite máximo de altura en px
+  maxHeight: number = 225;
   get imgHeight(): string {
     return Math.min(this.textareaHeight, this.maxHeight) + 'px';
   }
   onInput(event?: Event) {
-    // Ajustar la altura del textarea y la imagen según el contenido
     const textarea = event?.target as HTMLTextAreaElement;
     if (textarea) {
       textarea.style.height = 'auto';
@@ -32,7 +30,5 @@ export class ArpaPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 }
