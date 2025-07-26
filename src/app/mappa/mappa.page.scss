@@ -1,15 +1,25 @@
 .mappa-content {
-  background: #fff9de;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
 }
 
-.mappa-header, .mappa-footer {
+.mappa-header {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 21%;
-  margin-bottom: 0;
+  margin-bottom: 13px;
+  margin-top: 10px;
+}
+
+.mappa-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 21%;
+  margin-bottom: 140px;
   margin-top: 20px;
 }
 
@@ -25,7 +35,7 @@
 
 .mappa-map {
   height: 35%;
-  width: 95%;
+  width: 26%;
   margin: 0 auto;
   border: 4px solid #1d3105;
   border-radius: 30px;
@@ -33,16 +43,18 @@
 
 .antonietta-title {
   font-family: 'Gaegu', cursive;
-  font-size: 2.5em;
-  margin-left: -5px;
+  font-weight: bold;
+  font-size: 2.8em;
+  margin-left: -2px;
+  margin-top: -15px;
 }
 
 .antonietta-desc {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.9em;
+  font-size: 0.8em;
+  margin-top: -7px;
+  padding-right: 30px;
 }
-
-
 
 .clickable {
   cursor: pointer;
@@ -51,24 +63,26 @@
 .margin-left-neg {
   margin-left: -10px !important;
 }
+
 .custom-card {
-    background: #1d3105 !important;
-    border-radius: 38px;
-    color: #fff9de;
-    font-family: 'Gaegu', cursive;
-    width: 400px;
-    max-width: 400px;
-    margin: 0 0 20px 0;
+  background: #1d3105 !important;
+  border-radius: 38px;
+  color: #fff9de;
+  font-family: 'Gaegu', cursive;
+  width: 400px;
+  height: 140px;
+  max-width: 400px;
+  margin: 0;
+  box-shadow: none !important;
 }
 
 .seed-buttons-container-profilo {
-    //si
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 0 0 20px 20px;
-    justify-content: flex-start;
-    margin-left: -10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 0 0 20px;
+  justify-content: flex-start;
+  margin-left: -10px;
 }
 
 .miei-semi-title {
@@ -76,47 +90,287 @@
   font-size: 2.8em;
   text-align: left;
   margin-left: 20px;
-  margin-bottom: -40px;
+  margin-bottom: -35px;
   margin-top: 5px;
 }
+
 .seed-buttons-container {
-    display: flex;
-    align-items: center;
-    padding: 0 0 0px 20px;
-    justify-content: flex-start;
-    margin-left: -28px;
-    
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.semi-card {
+  height: 170px
 }
 
 .author-avatar {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    margin-left: -28px !important; // Superposición entre íconos
-    margin-top: 17px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-left: -28px !important;
+  margin-top: 20px;
 }
-
 
 .farmer-foto {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    margin-left: -8px !important; // Superposición entre íconos
-    margin-top: 17px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  margin-left: -1px !important;
+  margin-top: 4px;
 }
 
-
-// El primero no debe tener margen negativo
 .seed-buttons-container .author-avatar:first-child {
-    margin-left: 0 !important;
+  margin-left: 0 !important;
 }
 
 .seed-info {
-    //si
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* Esto alinea Ricetta + íconos a la izquierda */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5px;
+  margin-left: 10px !important;
+}
+
+@media (min-width: 410px) and (max-width: 414px) {
+  /* Estilos para dispositivos con anchos similares */
+}
+
+@media (min-width: 394px) and (max-width: 413px) {
+  .custom-card {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    border-radius: 18px;
+    font-size: 1em;
+  }
+
+  .mappa-map {
+    width: 98vw !important;
+    height: 250px !important;
+    border-radius: 38px !important;
+  }
+
+  .antonietta-title {
+    font-size: 1.3em;
+    margin-left: 0 !important;
+  }
+
+  .mappa-header,
+  .mappa-footer {
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .antonietta-desc {
+    font-size: 0.8em !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+/* Para celulares más grandes y algunas tablets pequeñas (hasta 576px de ancho) */
+@media (max-width: 576px) {
+  .custom-card {
+    width: 95vw;
+    max-width: 450px;
+    margin: 0 auto 0 auto;
+    border-radius: 38px;
+  }
+
+  .custom-card.semi-card {
+    height: 180px
+  }
+
+  .farmer-foto {
+    margin-top: -4px;
+  }
+
+  .seed-buttons-container-profilo {
+    height: 140px;
+  }
+
+  .mappa-map {
+    width: 95vw !important;
+    height: 250px !important;
+    border-radius: 38px;
+  }
+
+  .antonietta-title {
+    font-weight: bold;
+    font-size: 2.5em;
+    margin-left: -1px !important;
+  }
+
+  .antonietta-desc {
+    font-size: 0.7em;
+    padding-right: 40px;
+  }
+
+  .mappa-header,
+  .mappa-footer {
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .miei-semi-title {
+    font-size: 2.5em;
+    margin-left: 25px;
+  }
+
+  .seed-buttons-container {
+    margin-left: -5px;
+    margin-top: -30px;
+  }
+
+  .author-avatar {
+    width: 130px;
+    height: auto;
+  }
+}
+
+@media (max-width: 393px) {
+  .antonietta-desc {
+    font-size: 0.9em;
+    padding-right: 10px;
+  }
+
+  .miei-semi-title {
+    margin-bottom: -40px;
+  }
+}
+
+@media (width: 393px) {
+  .custom-card {
+    width: 95vw;
+    max-width: 400px;
+    height: 120px;
+    border-radius: 38px;
+    font-size: 0.9em;
+  }
+
+  .semi-card {
+    margin-bottom: 90px !important;
+  }
+
+  .mappa-content {
+    overflow-y: auto;
+    max-height: 100vh;
+    margin-bottom: 40px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .mappa-map {
+    width: 90vw;
+    height: 220px;
+    border-radius: 38px;
+  }
+
+  .antonietta-title {
+    font-size: 2em !important;
+    font-weight: bold;
+  }
+
+  .antonietta-desc {
+    font-size: 0.7em;
+    padding-right: 10px;
+  }
+
+  .miei-semi-title {
+    font-size: 2.3em;
+  }
+
+  .seed-buttons-container-profilo {
+    height: 120px;
+  }
+
+  .seed-buttons-container {
+    height: 120px;
+    margin: 18px 0 15px 0;
+  }
+
+  .farmer-foto {
+    width: 110px;
+    height: 110px;
+    margin-left: -5px !important; // Superposición entre íconos
+    margin-top: -1px;
+  }
+
+  .author-avatar {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    margin-left: -28px !important; // Superposición entre íconos
+    margin-top: 25px;
+  }
+
+  .mappa-header,
+  .mappa-footer {
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .custom-card {
+    width: 97vw !important;
+    max-width: 98vw !important;
+    height: 120px;
+  }
+
+  .mappa-map {
+    width: 97vw !important;
+    max-width: 98vw !important;
+    border-radius: 38px;
+  }
+
+  .seed-buttons-container-profilo {
+    height: 122px;
+  }
+
+  .farmer-foto {
+    width: 110px;
+    height: 110px;
+    margin-left: -5px !important; // Superposición entre íconos
+  }
+
+  .antonietta-title {
+    font-size: 2em !important;
+    font-weight: bold;
+    margin-left: -6px !important;
+  }
+
+  .antonietta-desc {
+    font-size: 0.8em;
+    margin-left: -5px;
+  }
+
+  .miei-semi-title {
+    font-size: 2.3em;
+  }
+
+  .semi-card {
+    height: 160px !important;
+    margin-bottom: 90px !important;
+  }
+
+  .miei-semi-title {
+    font-size: 2.4em;
     margin-top: 5px;
-    margin-left: 10px !important;
+    margin-left: 28px !important;
+  }
+
+  .seed-buttons-container {
+    margin-left: 2px;
+  }
+
+  .author-avatar {
+    height: 110px;
+    width: 110px;
+    object-fit: cover;
+    margin-left: -28px !important; // Superposición entre íconos
+    margin-top: 30px;
+  }
 }

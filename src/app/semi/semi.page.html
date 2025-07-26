@@ -3,44 +3,44 @@
   <div class="page-container">
     <section class="section-block">
       <div class="cards-grid">
-        <div class="card-row card-row-mb-neg">
+        <div class="card-row">
           <ion-card class="custom-card card-pointer" (click)="goToDettagli('fagiolino-del-trasimeno')">
-            <ion-card-title class="seed-title seed-title-mt">Fagiolino del trasimeno</ion-card-title>
+            <ion-card-title class="seed-title">Fagiolino del trasimeno</ion-card-title>
             <ion-card-content class="no-padding">
-              <img src="assets/semi2.png" class="seed-img seed-img-wide seed-img-ml" alt="fagiolino-di-trasimeno" />
+              <img src="assets/semi2.png" class="seed-img" alt="fagiolino-di-trasimeno" />
               <div class="seed-buttons-row">
-                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateTo('/mappa')"><img
+                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateToFarmer('contadini-3')"><img
                     src="assets/farmer-3.png" alt="Farmer 3" class="farmer-img-70" /></button>
-                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateTo('/mappa')"><img
-                    src="assets/farmer-2.png" alt="Farmer 2" class="farmer-img-65" /></button>
+                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateToFarmer('contadini-2')"><img
+                    src="assets/farmer-2.png" alt="Farmer 2" class="farmer-img" /></button>
                 <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateTo('/ricette')"><img
-                    src="assets/ricetta-icon.png" alt="Ricetta" class="farmer-img-65" /></button>
+                    src="assets/ricetta-icon.png" alt="Ricetta" class="ricetta-icon" /></button>
               </div>
             </ion-card-content>
           </ion-card>
         </div>
-        <div class="card-row card-row-mb-2">
+        <div class="card-row">
           <ion-card class="custom-card card-pointer" (click)="goToDettagli('rapi-del-trasimeno')">
-            <ion-card-title class="seed-title seed-title-mt-17">Rapi del trasimeno</ion-card-title>
+            <ion-card-title class="seed-title">Rapi del trasimeno</ion-card-title>
             <ion-card-content class="no-padding">
-              <img src="assets/semi3.png" class="seed-img seed-img-wide seed-img-ml" alt="rapi-di-trasimeno" />
+              <img src="assets/semi3.png" class="seed-img" alt="rapi-di-trasimeno" />
               <div class="seed-buttons-row">
-                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateTo('/mappa')"><img
-                    src="assets/farmer-1.png" alt="Farmer 1" class="farmer-img-65 farmer-img-mt-neg5" /></button>
+                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateToFarmer('contadini-1')"><img
+                    src="assets/farmer-1.png" alt="Farmer 1" class="farmer-img-70" /></button>
               </div>
             </ion-card-content>
           </ion-card>
         </div>
-        <div class="card-row card-row-mt-neg10">
+        <div class="card-row">
           <ion-card class="custom-card card-pointer" (click)="goToDettagli('cipolla')">
-            <ion-card-title class="seed-title seed-title-mt">Cipolla</ion-card-title>
+            <ion-card-title class="seed-title">Cipolla</ion-card-title>
             <ion-card-content class="no-padding">
-              <img src="assets/semi1.png" class="seed-img seed-img-wide seed-img-ml" alt="cipolla" />
-              <div class="seed-buttons-row">
-                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateTo('/mappa')"><img
-                    src="assets/farmer-4.png" alt="Farmer 4" class="farmer-img-65 farmer-img-mt7" /></button>
+              <img src="assets/semi1.png" class="seed-img" alt="cipolla" />
+              <div class="seed-buttons-row last">
+                <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateToFarmer('contadini-4')"><img
+                    src="assets/farmer-4.png" alt="Farmer 4" class="farmer-img" /></button>
                 <button class="seed-icon-btn" (click)="$event.stopPropagation(); navigateTo('/ricette')"><img
-                    src="assets/ricetta-icon.png" alt="Ricetta" class="farmer-img-65 farmer-img-mt7" /></button>
+                    src="assets/ricetta-icon.png" alt="Ricetta" class="ricetta-icon" /></button>
               </div>
             </ion-card-content>
           </ion-card>

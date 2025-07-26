@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonCard, IonCardContent, IonCardTitle } from '@ionic/angular/standalone';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-ricette',
   templateUrl: './ricette.page.html',
@@ -13,7 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 export class RicettePage implements OnInit {
 
   ingredienti: string = '';
-  textareaHeight: number = 120;
+  textareaHeight: number = 100;
   maxHeight: number = 300; // Límite máximo de altura en px
   get imgHeight(): string {
     return Math.min(this.textareaHeight, this.maxHeight) + 'px';
@@ -30,17 +31,16 @@ export class RicettePage implements OnInit {
     }
   }
 
-
-  navigateTo(path: string) {
-    this.router.navigate([path]);
-  }
-
-  goToDettagliRicette(id: string) {
-    this.router.navigate(['/dettagli-ricette', id]);
-  }
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  navigateToFarmer(farmerId: string) {
+    this.router.navigate(['/mappa'], { queryParams: { activeFarmer: farmerId } });
+  }
+
+  goToDettagliRicette(id: string) {
+    this.router.navigate(['/dettagli-ricette', id]);
+  }
 }

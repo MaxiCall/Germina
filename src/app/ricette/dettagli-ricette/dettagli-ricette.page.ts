@@ -1,10 +1,9 @@
-
-// Limpieza de métodos duplicados innecesarios
 // src/app/dettagli-semi/dettagli-semi.page.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, IonCard, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { MappaPage } from '../../mappa/mappa.page';
 
 @Component({
   selector: 'app-dettagli-ricette',
@@ -16,9 +15,9 @@ import { IonContent, IonCard, IonCardTitle, IonCardContent } from '@ionic/angula
     CommonModule
   ]
 })
-export class DettagliRicettePage implements OnInit {
+export class DettagliRicettePage implements OnInit, AfterViewInit {
   ricetta: any; // Aquí guardaremos los datos de la receta
-
+ 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -32,6 +31,10 @@ export class DettagliRicettePage implements OnInit {
         this.loadRicettaDetails(ricettaId);
       }
     });
+  }
+
+  ngAfterViewInit() {
+    // Método para asegurar que el componente está completamente cargado
   }
 
   loadRicettaDetails(id: string) {
@@ -53,8 +56,8 @@ export class DettagliRicettePage implements OnInit {
           'sale e pepe q.b.',
           'pomodorini q.b.',
         ],
-        preparazione: `Per la zuppa di fagioli dei pionieri, iniziamo mettendo dentro una pentola capiente, l'olio evo, aglio, cipolla, carota, sedano e porro. Lasciamo soffriggere per qualche secondo. Aggiungiamo il concentrato di pomodoro e il brodo di pollo caldo. Lasciamo cuocere per`,
-        autore: { name: 'Antonietta', image: 'assets/farmer-4.png' }
+        preparazione: `Per la zuppa di fagioli dei pionieri, iniziamo mettendo dentro una pentola capiente, l'olio evo, aglio, cipolla, carota, sedano e porro. Lasciamo soffriggere per qualche secondo. Aggiungiamo il concentrato di pomodoro e il brodo di pollo caldo. Lasciamo cuocere per circa 15 minuti...`,
+        autore: { id: 'contadini-4', name: 'Antonietta', image: 'assets/farmer-4.png' }
       };
 
     } else if (id === 'zuppa-di-fagioli-americani2') {
@@ -75,19 +78,13 @@ export class DettagliRicettePage implements OnInit {
           'sale e pepe q.b.',
           'pomodorini q.b.',
         ],
-        preparazione: `Per la zuppa di fagioli dei pionieri, iniziamo mettendo dentro una pentola capiente, l'olio evo, aglio, cipolla, carota, sedano e porro. Lasciamo soffriggere per qualche secondo. Aggiungiamo il concentrato di pomodoro e il brodo di pollo caldo. Lasciamo cuocere per`,
-        autore: { name: 'Ugo', image: 'assets/farmer-1.png' }
+        preparazione: `Per la zuppa di fagioli dei pionieri, iniziamo mettendo dentro una pentola capiente, l'olio evo, aglio, cipolla, carota, sedano e porro. Lasciamo soffriggere per qualche secondo. Aggiungiamo il concentrato di pomodoro e il brodo di pollo caldo. Lasciamo cuocere per circa 15 minuti..`,
+        autore: { id: 'contadini-1', name: 'Ugo', image: 'assets/farmer-1.png' }
       };
     }
   }
-
-
-  navigateTo(path: string) {
-    this.router.navigate([path]);
+  // Simplificar el método navigateToFarmer
+  navigateToFarmer(farmerId: string) {
+    this.router.navigate(['/mappa'], { queryParams: { activeFarmer: farmerId } });
   }
-
-  goToMappa() {
-    this.router.navigateByUrl('/mappa');
-  }
-
 }

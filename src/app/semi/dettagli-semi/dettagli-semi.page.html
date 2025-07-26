@@ -9,11 +9,11 @@
               {{ semilla?.name }}
             </ion-card-title>
             <ion-card-content class="no-padding">
-              <img [src]="semilla?.imageUrl" [alt]="semilla?.name || 'seme'" class="seed-img seed-img-wide seed-img-ml" />
+              <img [src]="semilla?.imageUrl" [alt]="semilla?.name || 'seme'" class="seed-img" />
               <div *ngIf="semilla?.cultivators?.length > 0" class="dettagli-cultivators">
                 <div *ngFor="let cultivator of semilla.cultivators" class="dettagli-cultivator-item">
                   <img [src]="cultivator.image" [alt]="cultivator.name" class="dettagli-cultivator-img"
-                   (click)="$event.stopPropagation(); navigateTo('/mappa')">
+                    (click)="$event.stopPropagation(); navigateToFarmer(cultivator.id)">
                   <span class="dettagli-cultivator-text">
                     Coltivato da {{ cultivator.name }}
                   </span>
@@ -33,11 +33,13 @@
                 <ion-card-title class="dettagli-banner-title">Scheda tecnica</ion-card-title>
                 <div class="dettagli-banner-row">
                   <img src="assets/foglietta.png" alt="Foglietta" class="foglietta-banner" />
-                  <div class="dettagli-banner-value">AVVICENDAMENTO: {{ semilla?.schedaTecnica?.avvicendamento || '—' }}</div>
+                  <div class="dettagli-banner-value">AVVICENDAMENTO: {{ semilla?.schedaTecnica?.avvicendamento || '—' }}
+                  </div>
                 </div>
                 <div class="dettagli-banner-row">
                   <img src="assets/foglietta.png" alt="Foglietta" class="foglietta-banner" />
-                  <div class="dettagli-banner-value dettagli-banner-value-prep">PREPARAZIONE DEL TERRENO: {{semilla?.preparazioneTerreno?.preparazioneTerreno || '—' }}</div>
+                  <div class="dettagli-banner-value dettagli-banner-value-prep">PREPARAZIONE DEL TERRENO:
+                    {{semilla?.preparazioneTerreno?.preparazioneTerreno || '—' }}</div>
                 </div>
               </div>
             </div>

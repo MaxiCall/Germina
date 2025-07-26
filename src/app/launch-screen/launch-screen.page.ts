@@ -14,7 +14,6 @@ export class LaunchScreenPage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    // Navigate to map page after 1.5 seconds
     setTimeout(() => {
       this.router.navigate(['/mappa']);
     }, 1500);

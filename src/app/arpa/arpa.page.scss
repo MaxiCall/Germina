@@ -3,13 +3,13 @@
   margin-top: 110px;
 }
 
-
 .arpa-logo {
   position: absolute;
   top: 10px;
   left: 10px;
   width: 250px;
   height: auto;
+  padding-bottom: 10px !important;
 }
 
 .impostazioni-icon {
@@ -34,17 +34,13 @@
   display: block;
   font-family: 'Gaegu', cursive;
   color: #fff9de;
-  font-weight: 700;
-
-  
 }
 
 .aggiorna-title {
-  margin-left: 30px !important;
-  margin-bottom: -10px;
-  margin-top: 10px;
-  font-size: 2.2em;
-   font-size: 2.3em !important;
+  font-size: 2.2em !important;
+  font-weight: 700;
+  margin-left: 15px;
+  margin-bottom: -5px !important;
 }
 
 .faq-title {
@@ -76,6 +72,20 @@
 
 .faq-accordion-group {
   background-color: #1d3105;
+  border: none !important;
+  --border: none !important;
+}
+
+.faq-accordion-group ion-accordion {
+  border: none !important;
+  --border: none !important;
+  --border-color: transparent !important;
+  margin-bottom: 0px !important;
+}
+
+.faq-accordion-group ion-accordion:not(:last-child) {
+  border-bottom: none !important;
+  --border-bottom: none !important;
 }
 
 .faq-accordion {
@@ -83,6 +93,8 @@
   color: #fff9de;
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 10px;
+  border: none !important;
+  --border: none !important;
 }
 
 .faq-header {
@@ -91,7 +103,9 @@
   width: 100%;
   font-weight: normal;
   padding-left: 10px;
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  border: none !important;
+  --border: none !important;
 }
 
 .faq-label {
@@ -107,7 +121,6 @@
 }
 
 .faq-table-desc {
-  padding-left: 28px;
   font-size: 1.2em;
   font-family: 'Montserrat', sans-serif;
 }
@@ -115,45 +128,29 @@
 .faq-table {
   width: 100%;
   border-collapse: collapse;
+  margin-left: -5px;
+  font-size: 0.80em;
 }
+
 .faq-table th,
 .faq-table td {
   padding: 8px;
   border: 1px solid #ddd;
   text-align: left;
 }
+
 .faq-table th {
   padding: 5px;
 }
 
-.center-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centers vertically */
-  align-items: center;     /* Centers horizontally */
-  height: 100%;            /* Essential for vertical centering within ion-content */
-  text-align: center;      /* Ensures text alignment */
-
-  img {
-    max-width: 250px;       /* Adjust size as needed for your logo */
-    margin-bottom: 20px;    /* Space between logo and text */
-  }
-
-  .working-text {
-    font-size: 1.2em;       /* Adjust font size as needed */
-    color: #1d3105;         /* Apply your specified color */
-    font-weight: bold;      /* Optional: Make the text bold */
-  }
-}
 .custom-card {
   background: #1d3105 !important;
   border-radius: 38px;
   color: #fff9de;
   font-family: 'Gaegu', cursive;
   width: 400px;
-  max-width: 400px;  // ✅ Arreglado
-  margin: 0 0 32px 0; // Margen solo abajo
-  box-shadow: 0 0 32px 0 #0002;
+  margin: 0 0 32px 0;
+  box-shadow: none !important;
 }
 
 .custom-card.first-recipe {
@@ -170,243 +167,377 @@ ion-content {
   font-family: 'Gaegu', cursive;
   font-size: 2em;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: -10px;
   text-align: left !important;
- margin-left: 15px;
-}
-
-
-
-y
-.seed-author {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2em;
-  color: #fff9de;
-  font-weight: 400;
-  margin-bottom: 0px;
-}
-
-.seed-icon-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  border-radius: 100%;
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.seed-icon-btn img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.seed-buttons-row img[alt="Me gusta"],
-.seed-buttons-row img[alt="Comentario"] {
-  width: 26px !important;
-  height: 26px !important;
-}
-.seed-buttons-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-
-}
-
-.seed-buttons-container {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 0 0 20px 20px;
-}
-
-/* Alineación izquierda */
-.seed-buttons-container.aligned-left {
-  justify-content: flex-start;
-}
-
-.author-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.seed-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Esto alinea Ricetta + íconos a la izquierda */
-  margin-top: 19px;
-}
-
-.seed-author {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.2em;
-  color: #fff9de;
-  font-weight: 400;
-  margin-bottom: 0px;
-}
-
-.icon-row {
-  display: flex;
-  align-items: right;
-  margin-right: 50px;
-}
-
-.icon-row img {
-  width: 50px;
-  height: 50px;
-  margin-top: -18px;
-}
-
-.icon-text {
-  font-family: 'Gaegu', cursive;
-  font-size: 0.5em;
-  color: #fff9de;
-}
-
-.centered-ingredient-text {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
-  color: #b6572c;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.3em;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  z-index: 2;
-}
-
-.absolute-textarea {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  min-height: 60px;
-  max-height: 300px;
-  text-align: center;
-  color: #b6572c;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.3em;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  z-index: 2;
-  background: transparent;
-  border: none;
-  resize: none;
-  outline: none;
-  box-shadow: none;
-  padding: 0 10px;
+  margin-left: 25px;
 }
 
 ion-accordion {
   background-color: #1d3105 !important;
   color: #fff9de;
   font-family: 'Montserrat', sans-serif;
+  border: none !important;
+  --border: none !important;
+  --border-color: transparent !important;
+  --border-width: 0px !important;
 }
 
-/* Asegúrate de que el textarea tenga el mismo padding y text-align */
-.absolute-textarea {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  background: transparent;
-  width: 30%; /* Considera ajustar este ancho o usar max-width */
-  min-height: calc(1.3em * 4 + 90px);
-  max-width: 350px;
-  color: #b6572c !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 1em;
-  font-weight: 700;
-  border: none;
-  border-radius: 12px;
-  outline: none;
-  box-shadow: none;
-  text-align: left !important; /* Asegúrate de que el texto del input se alinee igual */
-  resize: none;
-  /* IMPORTANTE: Unifica el padding. Por ejemplo, si quieres un padding de 20px arriba y 12px horizontal */
-  padding: 20px 12px 10px 12px; /* Top, Right, Bottom, Left. Ajusta a tu gusto */
-  height: calc(1.3em * 4 + 10px); /* Esto se verá afectado por el padding, quizás necesites recalcular */
-  max-height: calc(1.3em * 4 + 40px);
-  overflow-y: scroll;
-  box-sizing: border-box;
-  scrollbar-width: thin;
-  scrollbar-color: #fff9de #1d3105;
+ion-accordion ion-item {
+  --border-color: transparent !important;
+  --border-width: 0px !important;
+  --inner-border-width: 0px !important;
 }
 
-/* Y que el placeholder tenga EXACTAMENTE el mismo text-align y padding */
-.absolute-textarea::placeholder {
-  color: #b6572c !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-style: italic;
-  opacity: 1;
-  text-align: left !important;
-  white-space: nowrap;
-  display: block;
+ion-accordion .accordion-header {
+  border: none !important;
+  --border: none !important;
 }
 
-/* También tienes esta regla para el placeholder que puede entrar en conflicto */
-.centered-ingredient-text::placeholder {
-  color: #fff9decc; /* Este color es diferente al de .absolute-textarea::placeholder */
-  font-family: 'Gaegu', cursive; /* Esta fuente es diferente */
-  font-size: 1.1em;
-  font-weight: 400;
-  opacity: 1;
+ion-accordion .accordion-content {
+  border: none !important;
+  --border: none !important;
 }
 
-/* Si .centered-ingredient-text es también tu textarea, consolida los estilos.
-   Si es otro elemento, asegúrate de que no haya conflicto con .absolute-textarea.
-   Asumiré que quieres que .absolute-textarea sea el principal */
-.centered-ingredient-text {
-  /* Mantén esto si es para el mismo textarea, pero consolida con absolute-textarea */
-  display: block;
-  width: 90%;
-  margin: 0 auto 10px auto;
-  font-family: 'Gaegu', cursive;
-  color: #fff9de;
-  font-size: 1.3em;
-  font-weight: 700;
-  background: transparent;
-  border: none;
-  border-radius: 12px;
-  resize: none;
-  outline: none;
-  /* Aquí también deberías tener un padding que coincida con el placeholder */
-  padding: 20px 12px 10px 12px; /* Mismo padding que en .absolute-textarea */
-  min-height: 48px;
-  max-width: 350px;
-  box-shadow: none;
-  text-align: left; /* O el que desees, pero que coincida con el placeholder */
-  transition: background 0.2s, color 0.2s;
-}
-
-/* Asegúrate de que esta regla también tenga el text-align deseado */
-.absolute-textarea:focus::placeholder {
-  color: transparent !important;
+.img-text-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: visible;
+  padding-top: 80px;
+  margin-bottom: -5px;
 }
 
 .centered-img {
   display: block;
   position: relative;
-  margin-left: -15px !important;
-  width: 99%;
-  max-width: 400px;
-  min-width: 400px;
-  margin-top: -30px;
-  margin-bottom: 0px;
   z-index: 1;
+  max-width: 400px;
+  object-fit: fill;
+  transition: height 0.15s ease;
+  margin-top: -96px;
+}
+
+.centered-ingredient-text:focus {
+  padding-top: 55px !important;
+  text-align: left !important;
+}
+
+.centered-ingredient-text::placeholder {
+  color: #b6572c !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em !important;
+  font-weight: 700;
+  font-style: italic;
+  opacity: 1 !important;
+  text-align: left;
+  transition: opacity 0.3s ease;
+  transform: translateY(35px) translateX(-5px);
+}
+
+.centered-ingredient-text:focus::placeholder {
+  opacity: 0 !important;
+}
+
+.centered-ingredient-text {
+  font-size: 1.1em;
+  width: 390px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+  background: transparent;
+  color: #b6572c !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1em;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-align: left !important;
+  resize: none;
+  padding: 20px 20px 0 20px !important;
+  line-height: 1.3em;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #fff9de #1d3105;
+  height: 130px !important;
+  transform: translateY(-70px) translateX(-175px);
+  overflow-y: auto;
+  transition: height 0.15s ease, padding-top 0.15s ease;
+}
+
+/* Para celulares grandes y tablets pequeñas (ancho máximo 576px) */
+@media (max-width: 576px) {
+  .arpa-margin-top {
+    margin-top: 80px;
+  }
+
+  .arpa-logo {
+    width: 250px;
+    height: auto;
+    top: 8px;
+    left: 8px;
+  }
+
+  .impostazioni-icon {
+    width: 60px;
+    top: 20px;
+    right: -3px;
+  }
+
+  .custom-card {
+    width: 95vw;
+    max-width: 450px;
+    margin: 0 auto 15px auto;
+  }
+
+  .custom-card.first-recipe {
+    margin: 20px 0 25px 0;
+  }
+
+  .faq-title {
+    font-size: 1.6em;
+    margin: 0 0 -10px 23px;
+  }
+
+  .aggiorna-title {
+    font-size: 2em !important;
+    margin: 15px 0 -10px 35px !important;
+  }
+
+  .faq-header {
+    font-size: 1.2em;
+    padding-left: 8px;
+  }
+
+  .faq-content-text {
+    padding-left: 25px;
+    font-size: 1.1em;
+  }
+
+  .faq-table {
+    font-size: 0.7em;
+    margin-left: 90px !important;
+  }
+
+  .faq-table th,
+  .faq-table td {
+    padding: 5px;
+  }
+
+  .centered-img {
+    width: 420px !important;
+    margin-top: -100px;
+  }
+
+  .centered-ingredient-text:focus {
+    padding-top: 55px !important;
+    text-align: left !important;
+  }
+
+  .centered-ingredient-text::placeholder {
+    font-size: 0.9em;
+    transform: translateY(35px) translateX(-5px) !important;
+  }
+
+  .centered-ingredient-text:focus::placeholder {
+    opacity: 0 !important;
+  }
+
+  .centered-ingredient-text {
+    font-size: 1em;
+    transform: translateY(-76px) translateX(-180px);
+  }
+
+  .center-content img {
+    max-width: 200px;
+  }
+
+  .center-content .working-text {
+    font-size: 1.1em;
+  }
+
+  .faq-table {
+    margin-left: -1px !important;
+  }
+}
+
+@media (min-width: 394px) and (max-width: 413px) {
+
+  .aggiorna-title {
+    margin-left: 20px !important;
+    margin-bottom: -5px !important;
+  }
+}
+
+/* Para celulares muy pequeños (ancho máximo 320px) */
+@media (max-width: 375px) {
+  .arpa-margin-top {
+    margin-top: 60px;
+  }
+
+  .arpa-logo {
+    width: 140px;
+    top: 5px;
+    left: 5px;
+  }
+
+  .impostazioni-icon {
+    width: 40px;
+    top: 15px;
+    right: 5px;
+  }
+
+  .custom-card {
+    width: 95%;
+    max-width: 95%;
+    margin: 0 auto 25px 0;
+    border-radius: 28px;
+  }
+
+  .aggiorna-title {
+    font-size: 1.5em;
+    margin-left: 15px;
+    margin-bottom: -5px !important;
+  }
+
+  .faq-title {
+    font-size: 1.4em;
+    margin-left: 20px !important;
+    margin-bottom: -5px !important;
+  }
+
+  .custom-card ion-card-title {
+    font-size: 1.4em;
+    margin-left: 10px;
+  }
+
+  .faq-header {
+    font-size: 1.1em;
+    padding-left: 6px;
+  }
+
+  .faq-content-text {
+    padding-left: 15px;
+    font-size: 1em;
+  }
+
+  .faq-table {
+    font-size: 0.6em;
+    margin-left: 0px !important;
+  }
+
+  .faq-table th,
+  .faq-table td {
+    padding: 4px;
+  }
+
+  .faq-table th {
+    padding: 3px;
+  }
+
+  .centered-img {
+    max-width: 350px !important;
+    margin-top: -100px;
+  }
+
+  .centered-ingredient-text {
+    max-width: 330px !important;
+    transform: translateY(-76px) translateX(-160px) !important;
+  }
+
+  .centered-ingredient-text::placeholder {
+    font-size: 0.9em;
+    transform: translateY(58px);
+  }
+
+  .centered-ingredient-text:focus {
+    padding-top: 0;
+    padding-bottom: 0px;
+  }
+
+  .seed-info {
+    margin-top: 12px;
+  }
+
+  .author-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .seed-icon-btn img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .seed-buttons-row img[alt="Me gusta"],
+  .seed-buttons-row img[alt="Comentario"] {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .icon-row {
+    margin-right: 20px;
+  }
+
+  .icon-row img {
+    width: 35px;
+    height: 35px;
+    margin-top: -15px;
+  }
+
+  .center-content img {
+    max-width: 150px;
+    margin-bottom: 15px;
+  }
+
+  .center-content .working-text {
+    font-size: 1em;
+  }
+
+  .seed-buttons-container {
+    gap: 5px;
+    padding: 0 0 15px 15px;
+  }
+
+  ion-content {
+    --padding-bottom: 70px;
+  }
+}
+
+@media (max-width: 393px) {
+
+  .custom-card {
+    margin: 0 0 20px 0;
+  }
+
+  .aggiorna-title {
+    margin-left: 20px !important;
+  }
+
+  .centered-img {
+    width: 380px !important;
+    margin-top: -100px;
+  }
+
+  .centered-ingredient-text:focus {
+    padding-top: 55px !important;
+    text-align: left !important;
+  }
+
+  .centered-ingredient-text::placeholder {
+    font-size: 0.9em !important;
+    transform: translateY(35px) translateX(-5px) !important;
+  }
+
+  .centered-ingredient-text:focus::placeholder {
+    opacity: 0 !important;
+  }
+
+  .centered-ingredient-text {
+    font-size: 1.1em;
+    transform: translateY(-76px) translateX(-175px);
+  }
 }

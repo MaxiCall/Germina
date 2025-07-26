@@ -1,60 +1,38 @@
-.absolute-textarea:focus::placeholder {
-  color: transparent !important;
-}
-
-/* Y que el placeholder tenga EXACTAMENTE el mismo text-align y padding */
-.absolute-textarea::placeholder {
-  color: #b6572c !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-style: italic;
-
-
-  opacity: 1;
-  text-align: left !important;
-  white-space: nowrap;
-  display: block;
-}
-
 .custom-card {
-  //si
   background: #1d3105 !important;
   border-radius: 38px;
   width: 400px;
-  margin: 0 0 20px 0; // Margen solo abajo
+  box-shadow: none !important;
 }
 
 .custom-card.first-recipe {
-  //si
   background: #b6572c !important;
 }
 
 ion-content {
-  //si
   --padding-start: 0;
   --padding-end: 0;
   --padding-bottom: 90px;
 }
 
 .custom-card ion-card-title {
-  //si
   font-family: 'Gaegu', cursive;
   font-size: 2em;
   font-weight: 700;
-  margin-bottom: 5px;
   text-align: left !important;
-  margin-left: 15px;
-  margin-bottom: -10px;
+  margin: 0 0 -10px 15px;
 }
-
-
 
 .img-seed-img.wide-img {
-  //si
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   max-width: 430px;
-  margin: -30px 0 -30px -2%;
+  object-fit: cover;
+  margin-left: -5px;
+  margin-bottom: -20px;
 }
-
 
 .seed-author {
   font-family: 'Montserrat', sans-serif;
@@ -64,91 +42,96 @@ ion-content {
   margin-bottom: 0px;
 }
 
-
-.seed-buttons-row img[alt="Me gusta"],
-.seed-buttons-row img[alt="Comentario"] {
-  //si
-  width: 26px !important;
-  height: 26px !important;
-}
-
 .seed-buttons-container {
-  //si
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
+  margin-top: -25px;
 }
 
-/* Estilos migrados desde ricette.page.html */
 .centered-flex {
-  //si
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-.centered-ingredient-text {
-  display: block;
-  width: 90%;
-  margin: 0 auto 10px auto;
-  font-family: 'Gaegu', cursive;
-  color: #fff9de;
-  font-size: 1.3em;
-  font-weight: 700;
-  background: transparent;
-  border: none;
-  border-radius: 12px;
-  resize: none;
-  outline: none;
-  padding: 28px 12px 10px 12px;
-  min-height: 48px;
-  max-width: 350px;
-  box-shadow: none;
-  text-align: left;
-  transition: background 0.2s, color 0.2s;
-}
-
-/* También tienes esta regla para el placeholder que puede entrar en conflicto */
-.centered-ingredient-text::placeholder {
-  color: #fff9decc;
-  /* Este color es diferente al de .absolute-textarea::placeholder */
-  font-family: 'Gaegu', cursive;
-  /* Esta fuente es diferente */
-  font-size: 1.1em;
-  font-weight: 400;
-  opacity: 1;
-}
-
 .custom-title {
-  //si
   display: block;
-  margin-top: 18px;
+  margin-top: 20px !important;
+  margin-left: 22px !important;
+  margin-bottom: -5px !important;
   font-family: 'Gaegu', cursive;
   color: #fff9de;
-  font-size: 2.3em !important;
+  font-size: 2.2em !important;
   font-weight: 700;
 }
 
 .custom-title-recipe {
-  //si
   color: #fff9de !important;
-  margin: 20px 0 10px 25px !important;
+  margin: 15px 0 -25px 30px !important;
   font-size: 2em !important;
 }
 
 .no-padding {
-  //si
   padding: 0 !important;
   margin: 0 !important;
 }
 
-.centered-img {
-  display: block;
-  margin: 0 auto;
-  position: relative;
-  margin-bottom: 18px;
-  z-index: 1;
+.author-avatar.clickable {
+  cursor: pointer;
+}
+
+.icon-row.left-margin {
+  margin-left: -7px;
+}
+
+.comment-icon {
+  margin-left: -9px;
+}
+
+.seed-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 0 15px 20px;
+  justify-content: flex-start;
+  margin-left: 5px;
+}
+
+.author-avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.seed-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+  gap: 7px;
+}
+
+.seed-author {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 1em;
+  color: #fff9de;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.icon-row {
+  display: flex;
+  align-items: right;
+  margin-right: 50px;
+}
+
+.icon-row img {
+  width: auto;
+  height: 40px;
+  margin-top: -20px;
 }
 
 .img-text-container {
@@ -158,148 +141,293 @@ ion-content {
   align-items: center;
   width: 100%;
   min-height: 100px;
-  overflow: hidden;
+  overflow: visible;
+  padding-top: 80px;
 }
 
-.ingredienti-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #b6572c;
+.centered-img {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  max-width: 400px;
+  object-fit: fill;
+  transition: height 0.15s ease;
+  margin-top: -96px;
+}
+
+.centered-ingredient-text:focus {
+  padding-top: 80px !important;
+  text-align: left !important;
+}
+
+.centered-ingredient-text::placeholder {
+  color: #b6572c !important;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 700;
+  font-style: italic;
+  opacity: 1 !important;
   text-align: left;
-  pointer-events: none;
-  width: 80%;
-  z-index: 2;
-  white-space: pre-line;
-  opacity: 0.95;
+  transition: opacity 0.3s ease;
+  transform: translateY(60px) translateX(-5px);
 }
 
-.absolute-textarea {
+.centered-ingredient-text:focus::placeholder {
+  opacity: 0 !important;
+}
+
+.centered-ingredient-text {
+  font-size: 1.1em;
+  width: 390px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
+  z-index: 4;
   background: transparent;
-  width: 30%;
-  /* Considera ajustar este ancho o usar max-width */
-  min-height: calc(1.3em * 4 + 90px);
-  max-width: 350px;
   color: #b6572c !important;
   font-family: 'Montserrat', sans-serif !important;
   font-size: 1em;
-  font-weight: 700;
   border: none;
   border-radius: 12px;
   outline: none;
   box-shadow: none;
   text-align: left !important;
-  /* Asegúrate de que el texto del input se alinee igual */
   resize: none;
-  /* IMPORTANTE: Unifica el padding. Por ejemplo, si quieres un padding de 20px arriba y 12px horizontal */
-  padding: 8px 12px 10px 12px;
-  /* Top, Right, Bottom, Left. Menos espacio arriba */
-  height: calc(1.3em * 4);
-  /* Ajuste para compensar el nuevo padding */
-  max-height: calc(1.3em * 4 + 40px);
-  overflow-y: scroll;
+  padding: 0 20px 0 20px !important;
+  line-height: 1.3em;
   box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: #fff9de #1d3105;
+  height: 180px !important;
+  transform: translateY(-95px) translateX(-175px);
+  overflow-y: auto;
+  transition: height 0.15s ease, padding-top 0.15s ease;
+  padding-top: 20px !important;
 }
 
-.author-avatar.clickable {
-  //si
-  cursor: pointer;
+/* ========== RESPONSIVE DESIGN ========== */
+/* Para celulares más grandes y algunas tablets pequeñas (hasta 576px de ancho) */
+@media (max-width: 576px) {
+  .custom-card {
+    width: 95vw;
+    max-width: 450px;
+    margin: 0 auto 15px auto;
+  }
+
+  .first-recipe {
+    padding-bottom: 15px;
+  }
+
+  .custom-card ion-card-title {
+    font-size: 1.8em;
+    margin-left: 20px;
+  }
+
+  .custom-title {
+    font-size: 2.1em !important;
+    margin: 18px 0 5px 30px !important;
+  }
+
+  .custom-title-recipe {
+    font-size: 1.8em !important;
+    margin: 18px 0 -24px 30px !important;
+  }
+
+  .img-seed-img {
+    width: 100% !important;
+    margin-left: -5px !important;
+  }
+
+  .img-text-container {
+    min-height: 10px;
+  }
+
+  .centered-img {
+    width: 420px;
+    margin-top: -100px;
+  }
+
+  .centered-ingredient-text:focus {
+    padding-top: 80px !important;
+    text-align: left !important;
+  }
+
+  .centered-ingredient-text::placeholder {
+    transform: translateY(58px) translateX(-5px);
+  }
+
+  .centered-ingredient-text {
+    transform: translateY(-100px) translateX(-175px);
+    padding-top: 20px !important;
+  }
+
+  .center-content img {
+    max-width: 200px;
+  }
+
+  .center-content .working-text {
+    font-size: 1.1em;
+  }
+
+  .comment-icon {
+    margin-left: -7px !important;
+  }
+
+  .author-avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .seed-info {
+    gap: 10px;
+  }
+
+  .seed-author {
+    margin-top: 5px;
+    font-size: 1em;
+  }
+
+  .seed-buttons-container {
+    padding: 0px 0 15px 20px;
+    margin-top: -25px;
+  }
 }
 
-.icon-row.left-margin {
-  //si
-  margin-left: -7px;
-}
-
-.comment-icon {
-  //si
-  margin-left: -9px;
-}
-
-.seed-buttons-container {
-  //si
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 0 0 20px 20px;
-  justify-content: flex-start;
-  margin-left: 5px;
-}
-
-.author-avatar {
-  //si
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
+@media (min-width: 394px) and (max-width: 413px) {
+  .custom-title {
+    margin-left: 22px !important;
+  }
 }
 
 
-.seed-info {
-  //si
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  /* Esto alinea Ricetta + íconos a la izquierda */
-  margin-top: 19px;
+/* Para celulares pequeños (hasta 375px de ancho, ej. iPhone X/11/12/13/14 en retrato) */
+@media (max-width: 375px) {
+  .custom-card {
+    width: 97vw !important;
+    max-width: 98vw !important;
+    margin: 0 auto 12px auto;
+  }
+
+  .custom-card ion-card-title {
+    font-size: 1.6em;
+    margin: 12px 0 -11px 21px;
+  }
+
+  .custom-title {
+    font-size: 1.9em !important;
+    margin-top: 15px !important;
+  }
+
+  .custom-title-recipe {
+    font-size: 1.7em !important;
+    margin: 18px 0 -20px 25px !important;
+  }
+
+  .img-seed-img {
+    margin-left: -5px !important;
+    width: 100% !important;
+  }
+
+  .centered-img {
+    max-width: 350px !important;
+    margin-top: -100px;
+  }
+
+  .centered-ingredient-text {
+    transform: translateY(-100px) translateX(-160px) !important;
+  }
+
+  .centered-ingredient-text::placeholder {
+    font-size: 0.9em;
+    transform: translateY(58px);
+  }
+
+  .centered-ingredient-text:focus {
+    padding-top: 0;
+    padding-bottom: 0px;
+  }
+
+  .author-avatar {
+    width: 65px;
+    height: 65px;
+  }
+
+  .seed-info {
+    margin-top: 5px;
+    gap: 15px;
+  }
+
+  .seed-author {
+    font-size: 1.05em;
+  }
+
+  .icon-row {
+    margin-top: -8px;
+  }
+
+  .icon-row img {
+    width: auto;
+    height: 40px;
+  }
+
+  .comment-icon {
+    margin-left: -7px !important;
+  }
+
+  .seed-buttons-container {
+    padding: 0 0 10px 16px;
+    margin-top: -10px !important;
+  }
 }
 
-.seed-author {
-  //si
-  font-family: 'Montserrat', sans-serif !important;
-  font-size: 1.2em;
-  color: #fff9de;
-  font-weight: 400;
-  margin-bottom: 0px;
-}
+@media (max-width: 393px) {
+  .custom-card {
+    margin: 0 0 20px 0;
+  }
 
-.icon-row {
-  //si
-  display: flex;
-  align-items: right;
-  margin-right: 50px;
-}
+  .custom-title {
+    margin-left: 20px !important;
+  }
 
-.icon-row img {
-  //si
-  width: 50px;
-  height: 50px;
-  margin-top: -18px;
-}
+  .custom-title-recipe {
+    margin-top: 15px !important;
+    margin-bottom: -20px !important;
+  }
 
+  .centered-img {
+    width: 380px !important;
+    margin-top: -100px;
+  }
 
-.centered-ingredient-text {
-  /* Mantén esto si es para el mismo textarea, pero consolida con absolute-textarea */
-  display: block;
-  width: 90%;
-  margin: 0 auto 10px auto;
-  font-family: 'Gaegu', cursive;
-  color: #fff9de;
-  font-size: 1.3em;
-  font-weight: 700;
-  background: transparent;
-  border: none;
-  border-radius: 12px;
-  resize: none;
-  outline: none;
-  /* Aquí también deberías tener un padding que coincida con el placeholder */
-  padding: 20px 12px 10px 12px;
-  /* Mismo padding que en .absolute-textarea */
-  min-height: 48px;
-  max-width: 350px;
-  box-shadow: none;
-  text-align: left;
-  /* O el que desees, pero que coincida con el placeholder */
-  transition: background 0.2s, color 0.2s;
+  .icon-row img {
+    width: auto;
+    margin-top: -20px;
+    height: 40px;
+    margin-left: 1px;
+  }
+
+  .comment-icon {
+    margin-left: -7px !important;
+  }
+
+  .centered-ingredient-text:focus {
+    padding-top: 80px !important;
+    text-align: left !important;
+  }
+
+  .centered-ingredient-text::placeholder {
+    font-size: 0.9em;
+    transform: translateY(58px) translateX(-5px);
+  }
+
+  .centered-ingredient-text:focus::placeholder {
+    opacity: 0 !important;
+  }
+
+  .centered-ingredient-text {
+    font-size: 1.1em;
+    width: 360px !important;
+    transform: translateY(-100px) translateX(-175px);
+  }
 }

@@ -1,3 +1,4 @@
+/* --- Estilos Base (para pantallas grandes y por defecto) --- */
 .procedure-title {
   color: #fff9de;
   text-align: left;
@@ -8,6 +9,7 @@
 .procedure-content {
   width: 350px;
   margin-left: 10px !important;
+  padding-bottom: 40px;
 }
 
 .procedure-text {
@@ -26,7 +28,7 @@
 
 ion-content {
   --padding-start: 0;
-  --padding-end: 0;
+  --padding-end: 5px;
 }
 
 .custom-card ion-card-title {
@@ -39,19 +41,19 @@ ion-content {
 }
 
 .technical-banner-wrapper {
-  width: 110%;
-  height: 350px;
-  margin: -40px 0 -10px -20px;
+  margin: -20px 0 0px -20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .banner-background-image {
-  width: 380px;
-  height: 300px;
-  margin-left: 10px;
+  width: 400px;
+  height: 330px;
+  margin-left: 25px;
+  object-fit: fill;
 }
 
 .banner-content-overlay {
@@ -65,17 +67,17 @@ ion-content {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 32px 32px 0 32px;
+  padding: 0px 32px 0 20px;
   color: #b6572c;
   font-family: 'Montserrat', sans-serif;
 }
 
 .scheda-tecnica-title {
-  margin-left: 15px !important;
+  margin-left: 30px !important;
   color: #b6572c;
   font-family: 'Gaegu', cursive;
   font-size: 2em !important;
-  margin-bottom: -10px !important;
+  margin-top: 25px !important;
 }
 
 .foglietta-image {
@@ -92,28 +94,37 @@ ion-content {
 .ingredients-grid-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
-  column-gap: 5px;
-  padding: 0 0px;
-  margin-top: 15px;
-  font-size: 1.1em !important;
+  justify-content: flex-start;
+  width: 120%;
+  column-gap: -10px !important;
+  font-size: 1em !important;
+  margin-left: 10px;
 }
 
 .ingredient-item {
   display: flex;
   align-items: center;
-  width: calc(50% - 2.5px);
-  gap: 5px;
-  margin-bottom: -8px;
+  width: calc(50% - 12%);
+  gap: 16px;
   font-size: 1em;
+}
+
+.ingredient-item.extra-space {
+  margin-top: 9px !important;
+  margin-bottom: 3px;
 }
 
 .foglietta-image-small {
   width: 40px;
   height: auto;
   flex-shrink: 0;
-  margin-right: -10px;
+  margin-right: -25px;
+  margin-top: -3px;
+}
+
+.foglietta-image-top {
+  align-self: flex-start;
+  margin-top: -9px;
 }
 
 .ingredient-text {
@@ -129,31 +140,37 @@ ion-content {
 
 .custom-title-recipe {
   color: #fff9de !important;
-  margin: 20px 0 10px 25px !important;
+  margin: 15px 0 13px 30px !important;
   font-size: 2em !important;
 }
 
 .img-seed-img.wide-img {
-  width: 110% !important;
-  max-width: 430px !important;
-  margin: -40px 0 -30px -7%;
+  width: 100% !important;
+  height: 150px;
+  max-height: 150px !important;
+  min-height: 150px;
+  object-fit: cover;
+  display: block;
+  border: none;
+  margin: -30px 0 -15px -5px;
 }
 
 .seed-author {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
   color: #fff9de;
-  font-weight: 400;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 .seed-buttons-container {
   display: flex;
   align-items: center;
   gap: 7px;
-  padding: 0 0 20px 20px !important;
+  padding: 0 0 30px 20px;
   justify-content: flex-start;
-  margin-left: -15px !important;
+  margin-left: 5px;
+  position: relative;
+  z-index: 2001 !important;
 }
 
 .seed-info {
@@ -164,28 +181,29 @@ ion-content {
 }
 
 .author-avatar {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .author-avatar.clickable {
-  //si
   cursor: pointer;
+  pointer-events: auto !important;
+  z-index: 2000 !important;
+  position: relative;
 }
-
 
 .icon-row {
   display: flex;
-  align-items: right;
+  align-items: center;
   margin-right: 50px;
 }
 
 .icon-row img {
-  width: 50px;
+  width: 45px;
   height: auto;
-  margin-top: -18px;
+  margin-top: -22px;
 }
 
 .icon-row.left-margin {
@@ -194,4 +212,257 @@ ion-content {
 
 .comment-icon {
   margin-left: -9px;
+}
+
+.no-padding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.dettagli-card-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 80px;
+}
+
+.procedure-section {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+@media (max-width: 576px) {
+  .custom-card {
+    width: 95vw;
+    max-width: 580px;
+    margin: 0 auto 15px auto;
+  }
+
+  .custom-card ion-card-title {
+    font-size: 1.8em;
+  }
+
+  .custom-title-recipe {
+    font-size: 1.8em !important;
+    margin: 20px 0 20px 30px !important;
+  }
+
+  .img-seed-img.wide-img {
+    width: 100% !important;
+    margin: -35px 0 -10px -5px;
+  }
+
+  .seed-author {
+    font-size: 1em;
+  }
+
+  .seed-info {
+    margin-top: 15px
+  }
+
+  .seed-buttons-container {
+    padding: 0 0 0px 10px;
+    margin-left: 20px;
+    margin-bottom: -10px !important;
+  }
+
+  .author-avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .comment-icon {
+    margin-left: -7px;
+  }
+
+  .icon-row img {
+    width: 45px;
+  }
+
+  .technical-banner-wrapper {
+    height: 10% !important;
+    margin: 20px 0 -25px -22px;
+  }
+
+  .banner-background-image {
+    width: 98vw;
+    height: 350px;
+    object-fit: fill;
+  }
+
+  .banner-content-overlay {
+    min-height: 300px;
+    padding: 20px 28px 0 28px;
+  }
+
+  .scheda-tecnica-title {
+    margin: -10px 0 15px 10px !important;
+    font-size: 1.8em !important;
+  }
+
+  .ingredients-grid-container {
+    width: 115%;
+    margin-left: -5px;
+  }
+
+  .ingredient-item {
+    width: calc(50% - 30px);
+    gap: 12px;
+  }
+
+  .foglietta-image-small {
+    width: 35px;
+    margin-right: -20px;
+    margin-top: -1px;
+  }
+
+  .foglietta-image-top {
+    align-self: flex-start;
+    margin-top: -6px;
+  }
+
+  .ingredient-text {
+    font-size: 1em;
+  }
+
+  .procedure-section {
+    margin-top: 45px;
+    margin-left: 7px;
+  }
+
+  .procedure-content {
+    width: 90%;
+  }
+}
+
+
+@media (max-width: 375px) {
+  .custom-card {
+    width: 97vw !important;
+    max-width: 98vw !important;
+    margin: 0 auto 15px auto;
+  }
+
+  .custom-title-recipe {
+    font-size: 1.7em !important;
+    margin: 15px 0 15px 25px !important;
+  }
+
+  .seed-buttons-container {
+    padding: 0 0 0px 0px;
+    margin-top: -20px !important;
+  }
+
+  .icon-row img {
+    width: 40px;
+    height: auto;
+    margin-top: -18px;
+    margin-left: 1px;
+  }
+
+  .comment-icon {
+    margin-left: -7px !important;
+  }
+
+  .scheda-tecnica-title {
+    font-size: 1.8em !important;
+  }
+
+  .ingredients-grid-container {
+    width: 110%;
+    margin-left: -5px;
+    margin-bottom: 30px;
+  }
+
+  .ingredient-item {
+    width: calc(50% - 10px);
+    gap: 12px;
+    font-size: 1em;
+  }
+
+  .banner-background-image {
+    width: 95vw;
+    height: 320px;
+    object-fit: fill;
+  }
+
+  .foglietta-image-small {
+    margin: -3px -20px 0 0;
+  }
+
+  .foglietta-image-top {
+    align-self: flex-start;
+    margin-top: -8px !important;
+  }
+
+  .procedure-section {
+    margin-top: 45px;
+    margin-left: 10px;
+  }
+}
+
+
+@media (min-width: 376px) and (max-width: 393px) {
+  .custom-card {
+    width: 97vw !important;
+    max-width: 98vw !important;
+    margin: 0 auto 15px auto;
+  }
+
+  .custom-title-recipe {
+    font-size: 1.7em !important;
+    margin: 15px 0 15px 30px !important;
+  }
+
+  .seed-buttons-container {
+    margin-left: 15px !important;
+    margin-top: -20px;
+  }
+
+  .icon-row img {
+    width: 40px;
+    height: auto;
+    margin-top: -20px;
+    margin-left: 1px;
+  }
+
+  .comment-icon {
+    margin-left: -7px !important;
+  }
+
+  .scheda-tecnica-title {
+    margin: -30px 0 15px 10px !important;
+    font-size: 1.8em !important;
+  }
+
+  .ingredients-grid-container {
+    width: 115%;
+    margin-left: -5px;
+  }
+
+  .ingredient-item {
+    width: calc(50% - 23px);
+    gap: 12px;
+    font-size: 0.9em;
+  }
+
+  .banner-background-image {
+    width: 100 vw;
+    height: 330px;
+    object-fit: fill;
+  }
+
+  .foglietta-image-small {
+    margin: -3px -20px 0 0;
+  }
+
+  .foglietta-image-top {
+    align-self: flex-start;
+    margin-top: -8px !important;
+  }
+
+  .procedure-section {
+    margin-top: 45px;
+    margin-left: 10px;
+  }
 }

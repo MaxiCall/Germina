@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
 
 
   isActive(path: string): boolean {
-    return this.router.url === path;
+    return this.router.url === path || this.router.url.startsWith(path + '?');
   }
 
   isLaunchScreen(): boolean {

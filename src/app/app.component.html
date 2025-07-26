@@ -11,13 +11,16 @@
     </button>
     <button [class.active]="isActive('/semi')" (click)="navigateTo('/semi')" class="menu-btn">
       <span class="menu-btn-span">
-        <img *ngIf="isActive('/semi') || router.url.startsWith('/dettagli-semi')" src="assets/selezione-icona.png" alt="Seleccionado" class="selected-icon" />
+        <img *ngIf="isActive('/semi') || router.url.startsWith('/dettagli-semi')" src="assets/selezione-icona.png"
+          alt="Seleccionado" class="selected-icon" />
         <img src="assets/semi-icona.png" alt="Semi" class="main-icon" />
       </span>
     </button>
-    <button [class.active]="isActive('/ricette') || router.url.startsWith('/dettagli-ricette')" (click)="navigateTo('/ricette')" class="menu-btn">
+    <button [class.active]="isActive('/ricette') || router.url.startsWith('/dettagli-ricette')"
+      (click)="navigateTo('/ricette')" class="menu-btn">
       <span class="menu-btn-span">
-        <img *ngIf="isActive('/ricette') || router.url.startsWith('/dettagli-ricette')" src="assets/selezione-icona.png" alt="Seleccionado" class="selected-icon" />
+        <img *ngIf="isActive('/ricette') || router.url.startsWith('/dettagli-ricette')" src="assets/selezione-icona.png"
+          alt="Seleccionado" class="selected-icon" />
         <img src="assets/ricette-icona.png" alt="Ricette" class="main-icon" />
       </span>
     </button>

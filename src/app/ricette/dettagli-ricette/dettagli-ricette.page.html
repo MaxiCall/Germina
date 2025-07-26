@@ -3,7 +3,7 @@
   <div class="page-container">
     <section class="section-block">
       <div class="cards-grid">
-        <div style="display: flex; justify-content: center; width: 100%;">
+        <div class="dettagli-card-row">
           <ion-card class="custom-card">
             <ion-card-title class="custom-title-recipe">
               {{ ricetta?.name }}
@@ -12,7 +12,7 @@
               <img [src]="ricetta?.imageUrl" class="img-seed-img wide-img" [alt]="ricetta?.name" />
               <div class="seed-buttons-container aligned-left">
                 <img [src]="ricetta?.autore?.image" class="author-avatar clickable" [alt]="ricetta?.autore?.name"
-               (click)="navigateTo('/mappa'); $event.stopPropagation()" />
+                   (click)="$event.stopPropagation(); navigateToFarmer(ricetta?.autore?.id)" />
                 <div class="seed-info">
                   <span class="seed-author">Ricetta di {{ ricetta?.autore?.name }}</span>
                   <div class="icon-row left-margin">
@@ -22,15 +22,19 @@
                 </div>
               </div>
               <div class="technical-banner-wrapper">
-                <img src="assets/banner-2.png" alt="Banner tecnico" class="banner-background-image"
-                  style="width: 140%;">
+                <img src="assets/banner-2.png" alt="Banner tecnico"
+                  class="banner-background-image">
                 <div class="banner-content-overlay">
                   <ion-card-title class="scheda-tecnica-title">
                     Ingredienti
                   </ion-card-title>
                   <div class="ingredients-grid-container">
-                    <div *ngFor="let ingrediente of ricetta?.ingredienti" class="ingredient-item">
-                      <img src="assets/foglietta.png" alt="Icono Hoja" class="foglietta-image-small">
+                    <div *ngFor="let ingrediente of ricetta?.ingredienti" class="ingredient-item" [ngClass]="{
+                           'extra-space': ingrediente === '1 cucchiaio di concentrato di pomodoro' || ingrediente === '200 ml di brodo di pollo' || ingrediente === 'pomodorini q.b.',
+                           'foglietta-top': ingrediente === '1 cucchiaio di concentrato di pomodoro' || ingrediente === '200 ml di brodo di pollo'
+                         }">
+                      <img src="assets/foglietta.png" alt="Icono Hoja" class="foglietta-image-small"
+                        [ngClass]="{'foglietta-image-top': ingrediente === '1 cucchiaio di concentrato di pomodoro' || ingrediente === '200 ml di brodo di pollo'}">
                       <p class="ingredient-text">
                         {{ ingrediente }}
                       </p>

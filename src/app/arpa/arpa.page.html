@@ -6,20 +6,22 @@
       <div class="cards-grid">
         <img src="assets/arpa-logo.png" alt="ARPA Logo" class="arpa-logo">
         <img src="assets/impostazioni.png" alt="Impostazioni" class="impostazioni-icon">
-
         <div class="center-flex mb--10">
           <ion-card class="custom-card first-recipe">
           <ion-card-title class="arpa-title aggiorna-title">
               Aggiorna Arpa!</ion-card-title>
-                <ion-card-content class="no-padding">
-                  <div class="img-text-container">
-                    <img src="assets/forma.png" alt="Condividi la tua ricetta"   class="centered-img" [style.height]="imgHeight" />
-                    <textarea class="centered-ingredient-text absolute-textarea" placeholder="Scrivici o inviaci una foto..." rows="3" [(ngModel)]="commenti" (input)="onInput($event)"></textarea>
-                  </div>
-                </ion-card-content>
+            <ion-card-content class="no-padding">
+              <div class="img-text-container">
+                <img src="assets/forma.png"  alt="Condividi la tua ricetta" class="centered-img"
+                  [style.height]="imgHeight" />
+                <textarea class="centered-ingredient-text"
+                  placeholder="Scrivici o inviaci una foto..." rows="3" [(ngModel)]="commenti"
+                  (input)="onInput($event)">
+                </textarea>
+              </div>
+            </ion-card-content>
           </ion-card>
         </div>
-
         <div class="center-flex">
           <ion-card class="custom-card">
             <ion-card-title class="arpa-title faq-title">FAQ</ion-card-title>
@@ -177,7 +179,6 @@
             </ion-card-content>
           </ion-card>
         </div>
-
       </div>
     </section>
   </div>

@@ -13,8 +13,8 @@ import { IonContent, IonLabel, IonItem, IonAccordion, IonAccordionGroup, IonCard
 export class ArpaPage implements OnInit {
 
   commenti: string = '';
-  textareaHeight: number = 120;
-  maxHeight: number = 300; // Límite máximo de altura en px
+  textareaHeight: number = 100;
+  maxHeight: number = 225; // Límite máximo de altura en px
   get imgHeight(): string {
     return Math.min(this.textareaHeight, this.maxHeight) + 'px';
   }
@@ -29,10 +29,6 @@ export class ArpaPage implements OnInit {
       this.textareaHeight = newHeight;
     }
   }
-
-
-
-
 
   constructor() { }
 

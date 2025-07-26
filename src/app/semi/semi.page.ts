@@ -35,6 +35,10 @@ export class SemiPage implements OnInit {
     this.router.navigate(['/dettagli-semi', id]);
   }
 
+  navigateToFarmer(farmerId: string) {
+    this.router.navigate(['/mappa'], { queryParams: { activeFarmer: farmerId } });
+  }
+
   navigateTo(path: string) {
     this.router.navigate([path]);
   }

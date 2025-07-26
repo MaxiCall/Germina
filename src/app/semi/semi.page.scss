@@ -1,21 +1,27 @@
+/* --- Estilos base (para pantallas más grandes, o por defecto) --- */
+.cards-grid {
+  padding-bottom: 80px;
+}
+
 .card-row {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-.no-padding { padding: 0; margin: 0; }
+.no-padding {
+  padding: 0;
+  margin: 0;
+}
 
 .seed-buttons-row {
   display: flex;
   flex-direction: row;
   gap: 5px;
-  margin-bottom: 15px;
-  margin-top: 5px;
+  margin: 5px 90px 15px 22px;
   text-align: left;
-  margin-right: 90px;
-  margin-left: 22px;
 }
+
 .seed-icon-btn {
   background: none;
   border: none;
@@ -28,10 +34,12 @@
   align-items: center;
   justify-content: center;
 }
+
 .seed-icon-btn img {
   width: 55px;
   height: 55px;
 }
+
 .custom-card {
   background: #1d3105 !important;
   border-radius: 38px;
@@ -39,7 +47,8 @@
   font-family: 'Gaegu', cursive;
   width: 400px;
   max-width: 400px;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 0 !important;
+  box-shadow: 0 0 32px 0 #0002;
 }
 
 ion-content {
@@ -51,13 +60,12 @@ ion-content {
   font-family: 'Gaegu', cursive;
   font-size: 2em;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin: 15px 0 5px 28px;
   text-align: left !important;
-  margin-left: 28px;
-  color: #fff9de ;
-  margin-top: 18px;
+  color: #fff9de;
 }
-.custom-card ion-card-content img.seed-img {
+
+.seed-img {
   width: 100%;
   height: 110px;
   object-fit: cover;
@@ -66,4 +74,136 @@ ion-content {
   border: none;
   margin: 0;
   box-shadow: none;
+}
+
+.farmer-img-70 {
+  width: 48px !important;
+  height: auto !important;
+  margin-top: -2px;
+}
+
+.farmer-img {
+  width: 45px !important;
+  height: auto !important;
+}
+
+.ricetta-icon {
+  width: 50px !important;
+  height: auto !important;
+}
+
+
+/* --- ESTILOS RESPONSIVOS PARA CELULARES --- */
+/* Para celulares más grandes y algunas tablets pequeñas (hasta 576px de ancho) */
+@media (max-width: 576px) {
+  .custom-card {
+    width: 95vw;
+    max-width: 95vw !important;
+    border-radius: 38px;
+    margin: 0 auto 15px auto;
+  }
+
+  .seed-title {
+    font-size: 2em !important;
+    margin: 20px 0 2px 28px !important;
+  }
+
+  .seed-img {
+    width: 100% !important;
+    margin-left: 0 !important;
+    height: 120px;
+  }
+
+  .seed-buttons-row {
+    margin: 0 20px 15px 24px;
+    gap: 8px;
+  }
+
+  .seed-icon-btn img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .farmer-img-70 {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .farmer-img {
+    width: auto !important;
+    height: 45px !important;
+  }
+
+  .ricetta-icon {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .ricetta-icon-2 {
+    width: 55px !important;
+    height: 55px !important;
+  }
+}
+
+/* Para celulares pequeños (hasta 375px de ancho, ej. iPhone X/11/12/13/14 en retrato) */
+@media (max-width: 375px) {
+  .custom-card {
+    width: 97vw !important;
+    max-width: 98vw !important;
+    border-radius: 38px;
+  }
+
+  .custom-card ion-card-title {
+    margin-bottom: 2px !important;
+  }
+
+  .seed-img {
+    height: 100px !important;
+  }
+
+  .seed-buttons-row {
+    margin: 5px 15px 10px 22px;
+    gap: 5px;
+  }
+
+  .seed-icon-btn img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .farmer-img-70 {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .farmer-img {
+    width: auto !important;
+    height: 45px !important;
+  }
+
+  .ricetta-icon {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .ricetta-icon-2 {
+    width: 55px !important;
+    height: 55px !important;
+  }
+}
+
+/* Para celulares muy pequeños (hasta 320px de ancho) */
+@media (max-width: 393px) {
+  .seed-title {
+    font-size: 1.8em !important;
+    margin: 15px 0 -3px 25px !important;
+  }
+
+  .seed-buttons-row {
+    margin-top: -5px;
+  }
+
+  .last {
+    margin-top: -4px;
+  }
 }

@@ -7,7 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  background: #697f42 !important; /* ← Cambiado a #1d3105 */
+  background: #697f42 !important;
+  /* ← Cambiado a #1d3105 */
   padding: 0;
   transition: background 0.2s;
 }
@@ -21,7 +22,6 @@
   color: #fff;
   font-size: 1.15em;
   font-weight: 600;
-
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -63,19 +63,22 @@
 .menu-btn-span {
   display: block;
   position: relative;
-  width: 90px;
+  width: 110px;
   height: 90px;
   margin: 0 auto;
 }
 
 .selected-icon {
   position: absolute;
+  object-fit: fill;
   top: 0;
   left: 0;
-  width: 90px;
-  height: 90px;
+  width: auto !important;
+  height: 88px;
   z-index: 1;
   pointer-events: none;
+  margin-left: -1px;
+  margin-top: 2px;
 }
 
 .main-icon {
@@ -101,5 +104,44 @@
 
 ion-content .inner-scroll {
   background: #fff9de !important;
-  padding-bottom: 100px; /* Altura del menú inferior */
+  padding-bottom: 100px;
+  /* Altura del menú inferior */
+}
+
+@media (min-width: 376px) and (max-width: 393px) {
+  .menu-btn-span {
+    width: 100px !important;
+  }
+
+  .selected-icon {
+    height: 90px !important;
+    margin-left: -2px;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .menu-btn-span {
+    width: 100px !important;
+  }
+
+  .selected-icon {
+    height: 90px !important;
+    margin-left: -2px;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .menu-btn-span {
+    width: 90px !important;
+  }
+
+  .selected-icon {
+    max-width: 98px !important;
+    height: 90px !important;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
 }

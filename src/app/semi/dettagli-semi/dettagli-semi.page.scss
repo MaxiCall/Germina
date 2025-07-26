@@ -1,3 +1,4 @@
+/* --- Estilos base (para pantallas más grandes, o por defecto) --- */
 .dettagli-banner-row {
     display: flex;
     align-items: flex-start;
@@ -8,28 +9,14 @@
 .foglietta-banner {
     width: 40px;
     height: 40px;
-    margin: -7px -7px 0 2px;
+    margin: 16px -7px 0 2px;
 }
 
 .dettagli-card-row {
     display: flex;
     justify-content: center;
     width: 100%;
-}
-
-.dettagli-min-height {
-    min-height: 950px;
-}
-
-.dettagli-title {
-    display: block;
-    text-align: center;
-    margin-top: 18px;
-    margin-left: 28px !important;
-    font-family: 'Gaegu', cursive;
-    color: #fff9de;
-    font-size: 2em;
-    font-weight: 700;
+    padding-bottom: 80px;
 }
 
 .no-padding {
@@ -38,9 +25,8 @@
 }
 
 .dettagli-img {
-    width: 110%;
+    width: 10%;
     max-width: 430px;
-    margin-left: -4%;
 }
 
 .dettagli-cultivators {
@@ -48,7 +34,8 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    padding-left: 20px;
+    padding-left: 30px;
+    margin-top: -20px;
 }
 
 .dettagli-cultivator-item {
@@ -59,131 +46,79 @@
 }
 
 .dettagli-cultivator-img {
-    width: 60px;
+    width: 50px;
     height: auto;
 }
 
 .dettagli-cultivator-text {
     font-family: 'Montserrat', sans-serif;
     color: #fff9de !important;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .dettagli-ricette-btn {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: -2px;
     cursor: pointer;
 }
 
 .dettagli-ricette-img {
-    width: 60px;
+    width: 55px;
     height: auto;
 }
 
-
 .dettagli-ricette-text {
     font-family: 'Montserrat', sans-serif;
-    color: #fff;
-    font-size: 1.1em;
+    color: #fff9de;
+    font-size: 1em;
 }
 
 .dettagli-banner-wrapper {
     position: relative;
-    /* CRUCIAL: El padre del overlay debe ser relative */
     width: 100%;
     max-width: 430px;
-    /* Eliminar cualquier altura fija o min-height aquí si existiera */
-    margin-bottom: 40;
-    margin-top: 0px;
-    /* Margen superior para separarlo del contenido de arriba */
-    margin-left: auto;
-    margin-right: auto;
-    /* display: flex, flex-direction, justify-content, align-items
-     Son para centrar el wrapper en su padre. Mantenlos si te funciona,
-     pero no afectan directamente a la altura del ion-card que lo contiene. */
 }
-
 
 .dettagli-banner-img {
     width: 100%;
-    /* El 100% de su contenedor (.dettagli-banner-wrapper) */
-    height: 630px !important;
-    /* ¡ALTURA FIJA DE LA IMAGEN! Esto es lo que le da altura al wrapper */
-    padding-bottom: 40px;
-    /* Este padding se añade a la altura de la imagen. La altura total aportada es 630px + 40px = 670px */
+    height: 460px;
     margin-left: 3px !important;
 }
 
 .dettagli-banner-overlay {
     position: absolute;
     top: 0;
-    /* Alineado con la parte superior del .dettagli-banner-wrapper */
     left: 0;
     width: 100%;
-    height: 100%;
-    /* Toma el 100% de la altura del .dettagli-banner-wrapper (670px) */
     z-index: 2;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    /* IMPORTANTE: Inicia el contenido desde arriba del overlay */
-
-    /* *** AJUSTA ESTE VALOR (padding-top) SOLAMENTE *** */
-    /* Este es el que mueve el contenido (título y datos) hacia abajo dentro del overlay,
-     para alinearse visualmente con la forma de tu imagen de fondo. */
-    padding: 45px 40px 40px 15px;
-    /* Mueve el contenido más a la derecha */
-
+    padding: 15px 40px 0 15px;
     color: #b6572c;
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: 0 !important;
-    /* Asegurar que no hay margen negativo */
-}
-
-/* ... (resto de tus estilos se mantienen) ... */
-
-/* Si tienes la clase .dettagli-min-height en tu ion-card, asegúrate que no sea demasiado restrictiva */
-.dettagli-min-height {
-    min-height: auto;
-    /* Permite que el card se ajuste al contenido */
-}
-
-.dettagli-banner-title {
-    margin-left: 30px !important;
-    font-size: 3em;
-    color: #b6572c;
-    font-family: 'Gaegu', cursive;
 }
 
 .dettagli-banner-value {
-    white-space: pre-line;
-    margin: 6px 0 12px 0;
-    text-align: left;
-    width: 100%;
-    padding-left: 0;
-    font-family: 'Montserrat', sans-serif;
-    color: #b6572c;
-    font-size: 1.1em;
+    margin: 30px 0 -20px 0;
 }
 
 .dettagli-banner-value-prep {
-    text-align: left;
-    width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    color: #b6572c;
-    font-size: 1.1em;
+    font-size: 0.95em;
 }
 
-.seed-buttons-row {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    margin-bottom: 15px;
-    margin-top: 4px;
-    text-align: left;
+.dettagli-title {
+    color: #fff9de;
+}
+
+.dettagli-banner-title {
+    margin-top: -90px !important;
+    font-size: 3em;
+    color: #b6572c;
+    font-family: 'Gaegu', cursive;
 }
 
 .seed-icon-btn {
@@ -206,35 +141,11 @@
 
 .custom-card {
     background: #1d3105 !important;
-    border-radius: 38px;
+    border-radius: 38px !important;
     color: #fff9de;
     font-family: 'Gaegu', cursive;
     width: 400px;
-    max-width: 400px;
-    margin: 0 0 32px 0;
-    box-shadow: 0 0 32px 0 #0002;
-    /* IMPORTANTE: Si tenías 'min-height: 950px;' aquí, lo vamos a quitar o reducir significativamente
-     para que el ion-card pueda expandirse naturalmente con el contenido.
-     Si el problema es que el contenido dinámico es MUY GRANDE y empuja el card fuera de la vista,
-     entonces 'min-height' no es la solución, sino el 'max-height' o la capacidad de scroll. */
-    min-height: auto;
-    /* Permite que la altura se ajuste automáticamente */
-    // Opcional: si sabes que necesita un mínimo para que se vea bien vacío
-    // min-height: 600px;
 }
-
-
-/* Detalles de la imagen principal de la semilla */
-.seed-img-wide {
-    width: 110%;
-    /* Mantienes tu ancho */
-    max-width: 430px;
-}
-
-.seed-img-ml {
-    margin-left: -4%;
-}
-
 
 ion-content {
     --padding-start: 0;
@@ -245,20 +156,190 @@ ion-content {
     font-family: 'Gaegu', cursive;
     font-size: 2em;
     font-weight: 700;
-    margin-bottom: 5px;
     text-align: left !important;
-    margin-left: 12px;
+    margin: 15px 0 -15px 27px !important;
 }
 
-.custom-card ion-card-content img.seed-img {
+.seed-img {
     width: 100%;
-    height: 110px;
-    max-height: 110px;
-    min-height: 110px;
+    height: 150px;
+    max-height: 150px;
+    min-height: 150px;
     object-fit: cover;
     display: block;
-    border-radius: 0 0 22px 22px;
     border: none;
     margin: 0;
-    box-shadow: none;
+}
+
+/* --- ESTILOS RESPONSIVOS PARA CELULARES --- */
+/* Para celulares más grandes y algunas tablets pequeñas (hasta 576px de ancho) */
+@media (max-width: 576px) {
+    .custom-card {
+        width: 95vw;
+        border-radius: 25px;
+        margin: 0 auto 20px auto;
+    }
+
+    .dettagli-title {
+        font-size: 1.8em;
+        margin: 15px 0 2px 30px !important;
+    }
+
+    .seed-img {
+        margin: -15px 0 -20px 0 !important;
+        width: 100% !important;
+    }
+
+    .dettagli-cultivators {
+        padding-left: 33px !important;
+    }
+
+    .dettagli-cultivator-img {
+        width: 45px;
+    }
+
+    .dettagli-ricette-img {
+        width: 50px;
+        height: auto;
+        margin-left: -2px;
+    }
+
+    .dettagli-cultivator-text,
+    .dettagli-ricette-text {
+        font-size: 1em;
+    }
+
+    .dettagli-banner-wrapper {
+        max-width: 95vw;
+    }
+
+    .dettagli-banner-img {
+        width: 95%;
+        height: 580px;
+        padding-bottom: 30px;
+        margin-left: 15px !important;
+    }
+
+    .dettagli-banner-overlay {
+        padding: 20px 40px 20px 50px;
+        margin-left: -15px;
+    }
+
+    .dettagli-banner-title {
+        font-size: 2.2em;
+    }
+
+    .dettagli-banner-value {
+        margin: 30px 0 -20px 0;
+    }
+
+    .dettagli-banner-value-prep {
+        font-size: 0.95em;
+    }
+
+    .foglietta-banner {
+        width: 30px;
+        height: 30px;
+        margin: 23px -5px 0 0px;
+    }
+
+    .dettagli-banner-row {
+        margin-bottom: 6px;
+    }
+}
+
+@media (max-width: 412px) {
+    .dettagli-banner-img {
+        width: 100%;
+        height: 520px;
+        margin-left: 3px !important;
+    }
+
+    .dettagli-cultivators {
+        padding-left: 25px !important;
+    }
+}
+
+/* Para celulares pequeños (hasta 375px de ancho, ej. iPhone X/11/12/13/14 en retrato) */
+@media (max-width: 375px) {
+    .custom-card {
+        width: 97vw !important;
+        max-width: 98vw !important;
+        border-radius: 38px;
+    }
+
+    .seed-img {
+        margin-top: -10px !important;
+        width: 100% !important;
+        height: 110px !important;
+        object-fit: fill;
+    }
+
+
+    .custom-card ion-card-title {
+        margin-bottom: -20px !important;
+    }
+
+    .dettagli-cultivators {
+        padding-left: 20px !important;
+    }
+
+    .dettagli-cultivator-img {
+        width: 45px;
+    }
+
+    .dettagli-ricette-img {
+        width: 50px;
+        height: auto;
+        margin-left: -2px;
+    }
+
+    .dettagli-cultivator-text,
+    .dettagli-ricette-text {
+        font-size: 1em;
+    }
+
+    .dettagli-banner-wrapper {
+        max-width: 98vw;
+        margin-top: 5px;
+        position: relative;
+    }
+
+    .dettagli-banner-img {
+        height: 560px !important;
+    }
+
+    .dettagli-banner-overlay {
+        padding: 20px 45px 0 45px;
+    }
+
+    .dettagli-banner-title {
+        font-size: 1.8em;
+    }
+
+    .dettagli-banner-value,
+    .dettagli-banner-value-prep {
+        font-size: 0.9em;
+        margin: 30px 0 6px 0;
+    }
+
+    .foglietta-banner {
+        width: auto;
+        height: 30px;
+        margin: 21px -6px 0 0px;
+    }
+
+    .dettagli-banner-row {
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 393px) {
+    .dettagli-banner-title {
+        margin-top: 5px;
+    }
+
+    .dettagli-banner-img {
+        height: 630px;
+    }
 }

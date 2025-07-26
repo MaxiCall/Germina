@@ -1,12 +1,11 @@
-
 import { AfterViewInit, Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader } from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-interface Semilla {
+export interface Semilla {
   id: string;
   name: string;
   type: string;
@@ -35,6 +34,8 @@ export class MappaPage implements OnInit, AfterViewInit {
   map: any;
   infoWindow: any;
   userMarker: google.maps.Marker | null = null; // Reintroducir la propiedad userMarker
+  activeFarmerId: string | null = null;
+  private isMapInitialized = false;
 
   variedades: Semilla[] = [
     { id: 'fagiolino-verde-nano', name: 'Fagiolino verde nano', type: 'Fagioli', imageUrl: 'assets/seed-icon1.png', lat: 43.140, lng: 12.250 },
@@ -61,74 +62,134 @@ export class MappaPage implements OnInit, AfterViewInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.filterType = params['filterType'] || null;
-      console.log('NGONINIT: Tipo de filtro obtenido:', this.filterType);
+      this.activeFarmerId = params['activeFarmer'] || null;
+
+      // Asegurar que el mapa se recargue siempre al acceder a la página
+      this.loadMap(this.filterType);
+      this.getCurrentPosition();
     });
   }
 
-  goToMap() {
-    this.router.navigate(['/mappa-semi']);
-  }
-
-  goToList() {
-    this.router.navigate(['/lista-semi']);
-  }
-
   ngAfterViewInit() {
-    console.log('NGAFTERVIEWINIT: Iniciando carga del mapa...');
-    // Comprobación robusta para Google Maps API
-    if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
-      // Si estamos en desarrollo y la API no está, recarga la página completamente una vez
-      if (!window.__maps_reload) {
-        window.__maps_reload = true;
-        console.warn('Google Maps API no está cargada. Recargando la página para forzar la carga del script...');
-        window.location.reload();
-        return;
+    // Asegurar que el elemento del mapa esté disponible antes de cargar
+    setTimeout(() => {
+      if (this.mapElement && this.mapElement.nativeElement) {
+        this.loadMap(this.filterType);
+        this.getCurrentPosition();
+        this.isMapInitialized = true;
       } else {
-        // Si ya recargó y sigue sin estar, muestra error
-        alert('No se pudo cargar Google Maps. Por favor, reinicia el servidor de desarrollo.');
-        return;
+        console.error('El elemento del mapa no está disponible en ngAfterViewInit');
       }
-    }
-    this.loadMap(this.filterType);
-    this.getCurrentPosition(); // Obtener la posición actual del usuario
+    }, 100);
   }
 
   getCurrentPosition() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-                console.log('Posición actual obtenida:', lat, lng);
-                this.addUserMarker(lat, lng); // Añadir marcador en la posición actual
-            },
-            (error) => {
-                console.error('Error al obtener la posición actual:', error);
-            }
-        );
-    } else {
-        console.error('La geolocalización no está soportada por este navegador.');
+    // Verificar si el mapa está listo
+    if (!this.map) {
+      setTimeout(() => this.getCurrentPosition(), 1000);
+      return;
     }
-}
+    
+    if (navigator.geolocation) {
+      
+      // Opciones más permisivas para móviles
+      const options = {
+        enableHighAccuracy: false, // Cambiar a false para mejor compatibilidad móvil
+        timeout: 10000, // Aumentar timeout a 10 segundos
+        maximumAge: 300000 // Aceptar posiciones de hasta 5 minutos
+      };
+      
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          this.addUserMarker(lat, lng);
+        },
+        (error) => {
+          console.error('❌ Error al obtener la posición actual:', error);
+          console.error('Código de error:', error.code);
+          console.error('Mensaje de error:', error.message);
+          
+          // Intentar con opciones más básicas si falla
+          console.log('Intentando con opciones básicas...');
+          const basicOptions = {
+            enableHighAccuracy: false,
+            timeout: 15000,
+            maximumAge: 600000
+          };
+          
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const lat = position.coords.latitude;
+              const lng = position.coords.longitude;
+              this.addUserMarker(lat, lng);
+            },
+        
+          );
+        },
+        options
+      );
+    } else {
+      console.error('La geolocalización no está soportada por este navegador.');
+      // Fallback para navegadores sin geolocalización
+      this.addUserMarker(43.13, 12.25);
+    }
+  }
+
+  private createMarkerContent(seed: Semilla): string {
+    return `
+      <div style="max-width: 270px; font-family: 'Segoe UI', Arial, sans-serif; color: #222;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <img src="${seed.imageUrl}" alt="${seed.name}" style="width: 80px; height: 80px; object-fit: cover;" />
+          <div style="flex:1;">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+              <h3 style="margin: 5px 0 15px 0; font-size: 1.1em; color: #b48a00; flex:1;">${seed.name}</h3>
+              <button id="close-popup-btn-${seed.id}" style="background: none; border: 0; outline: none; color: #b48a00; font-size: 2.1em; font-weight: bold; cursor: pointer; padding: 0 8px; line-height: 1; position: relative; top: -10px;">&times;</button>
+            </div>
+            <span style="font-size: 0.95em; background: #fffbe6; color: #b48a00; border-radius: 6px; padding: 2px 8px; border: 1px solid #e0c36a;">${seed.type}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  private configurePopupCloseButton(seedId: string) {
+    setTimeout(() => {
+      const defaultCloseBtn = document.querySelector('button.gm-ui-hover-effect');
+      if (defaultCloseBtn) {
+        (defaultCloseBtn as HTMLElement).style.display = 'none';
+      }
+      const closeBtn = document.getElementById(`close-popup-btn-${seedId}`);
+      if (closeBtn) {
+        closeBtn.onclick = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          if (this.infoWindow) {
+            this.infoWindow.close();
+          }
+          return false;
+        };
+      }
+    }, 100);
+  }
+
+  private openPopup(seed: Semilla, marker: google.maps.Marker) {
+    const contentString = this.createMarkerContent(seed);
+    this.zone.run(() => {
+      this.infoWindow.setContent(contentString);
+      this.infoWindow.open(this.map, marker);
+      this.configurePopupCloseButton(seed.id);
+    });
+  }
 
   async loadMap(filterType?: string | null) {
-    // Coordenadas y zoom para la vista inicial del mapa (como en las imágenes)
     const initialLat = 43.13;
-    const initialLng = 12.25; // Ajustado ligeramente para centrar mejor la vista de las imágenes
+    const initialLng = 12.25;
     const initialZoom = 10;
 
-    if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
-      console.error('Google Maps API no está cargada.');
+    if (!this.mapElement?.nativeElement || typeof google === 'undefined' || typeof google.maps === 'undefined') {
+      console.error('Google Maps API o elemento del mapa no están disponibles.');
       return;
-    }
-
-    if (!this.mapElement || !this.mapElement.nativeElement) {
-      console.error('El elemento del mapa (#map) no está disponible.');
-      return;
-    }
-
-    if (this.map) {
-      this.map = null;
     }
 
     const mapOptions: google.maps.MapOptions = {
@@ -136,51 +197,41 @@ export class MappaPage implements OnInit, AfterViewInit {
       zoom: initialZoom,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
-      draggable: true // El mapa es completamente arrastrable
+      draggable: true
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.infoWindow = new google.maps.InfoWindow();
 
-    let seedsToDisplay: Semilla[] = [];
-    if (filterType) {
-      seedsToDisplay = this.variedades.filter(seed => seed.type === filterType);
-      console.log('Semillas filtradas:', seedsToDisplay);
-    } else {
-      seedsToDisplay = this.variedades;
-      console.log('Mostrando todas las semillas:', seedsToDisplay);
+    const markerMap: { [id: string]: google.maps.Marker } = {};
+    const seedsToDisplay = filterType
+      ? this.variedades.filter(seed => seed.type === filterType)
+      : this.variedades;
+
+    this.addMarkers(seedsToDisplay, this.activeFarmerId, markerMap);
+
+    if (this.activeFarmerId) {
+      const seed = this.variedades.find(s => s.id === this.activeFarmerId);
+      if (seed) {
+        const marker = markerMap[this.activeFarmerId];
+        if (marker) {
+          this.openPopup(seed, marker);
+        } else {
+          console.warn(`No se encontró marcador para activeFarmerId: ${this.activeFarmerId}`);
+        }
+      } else {
+        console.warn(`No se encontró semilla para activeFarmerId: ${this.activeFarmerId}`);
+      }
     }
 
-    this.addMarkers(seedsToDisplay);
-}
-
-  // Eliminado el método addHomeMarker y referencias relacionadas
-
-  // Eliminado startTrackingUserPosition()
-  // Eliminado ngOnDestroy()
-
-  addUserMarker(lat: number, lng: number) {
-    // Eliminar marcador anterior del usuario si existe para que no se dupliquen
-    if (this.userMarker) {
-      this.userMarker.setMap(null);
-    }
-
-    this.userMarker = new google.maps.Marker({
-      position: { lat, lng },
-      map: this.map,
-      title: 'Tu ubicación actual',
-      icon: {
-        url: 'assets/map-icon-1.png', // Icono actualizado para la ubicación actual del usuario
-        scaledSize: new google.maps.Size(38, 38),
-        anchor: new google.maps.Point(19, 38)
-      },
-      animation: google.maps.Animation.DROP
+    this.map.addListener('click', () => {
+      if (this.infoWindow) {
+        this.infoWindow.close();
+      }
     });
+  }
 
-    console.log('Ubicación actual del usuario mostrada en el mapa:', lat, lng);
-}
-
-  addMarkers(seeds: Semilla[]) {
+  addMarkers(seeds: Semilla[], activeFarmerId: string | null, markerMap: { [id: string]: google.maps.Marker }) {
     seeds.forEach(seed => {
       const iconUrl = (seed.type === 'Contadino' || seed.type === 'Contadina')
         ? 'assets/map-icon-3.png'
@@ -198,53 +249,45 @@ export class MappaPage implements OnInit, AfterViewInit {
         animation: google.maps.Animation.DROP
       });
 
-      const contentString = `
-        <div style="max-width: 270px; font-family: 'Segoe UI', Arial, sans-serif; color: #222;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <img src="${seed.imageUrl}" alt="${seed.name}" style="width: 80px; height: 80px; object-fit: cover;" />
-            <div style="flex:1;">
-              <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
-                <h3 style="margin: 5px 0 15px 0; font-size: 1.1em; color: #b48a00; flex:1;">${seed.name}</h3>
-                <button id="close-popup-btn-${seed.id}" style="background: none; border: 0; outline: none; color: #b48a00; font-size: 2.1em; font-weight: bold; cursor: pointer; padding: 0 8px; line-height: 1; position: relative; top: -10px;">&times;</button>
-              </div>
-              <span style="font-size: 0.95em; background: #fffbe6; color: #b48a00; border-radius: 6px; padding: 2px 8px; border: 1px solid #e0c36a;">${seed.type}</span>
-            </div>
-          </div>
-        </div>
-      `;
+      markerMap[seed.id] = marker;
 
       marker.addListener('click', () => {
-        this.zone.run(() => {
-          this.infoWindow.setContent(contentString);
-          this.infoWindow.open(this.map, marker);
-          setTimeout(() => {
-            const defaultCloseBtn = document.querySelector('button.gm-ui-hover-effect');
-            if (defaultCloseBtn) {
-              (defaultCloseBtn as HTMLElement).style.display = 'none';
-            }
-            // Botón Dettagli eliminado
-            const closeBtn = document.getElementById(`close-popup-btn-${seed.id}`);
-            if (closeBtn) {
-              closeBtn.onclick = (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                if (this.infoWindow) {
-                  this.infoWindow.close();
-                }
-                return false;
-              };
-            }
-          }, 0);
-        });
+        this.openPopup(seed, marker);
       });
     });
+  }
 
-    if (this.map) {
-      this.map.addListener('click', () => {
-        if (this.infoWindow) {
-          this.infoWindow.close();
-        }
+  addUserMarker(lat: number, lng: number) {
+    if (!this.map) {
+      console.error('ADDUSER: El mapa no está disponible');
+      return;
+    }
+
+    if (this.userMarker) {
+      this.userMarker.setMap(null);
+    }
+
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    try {
+      this.userMarker = new google.maps.Marker({
+        position: { lat, lng },
+        map: this.map,
+        title: 'Tu ubicación actual',
+        icon: {
+          url: 'assets/map-icon-1.png',
+          scaledSize: new google.maps.Size(38, 38),
+          anchor: new google.maps.Point(19, 38)
+        },
+        animation: google.maps.Animation.DROP
       });
+
+      if (this.userMarker && this.userMarker.getMap()) {
+        console.log('ADDUSER: ✅ Marcador añadido al mapa correctamente');
+      } else {
+        console.error('ADDUSER: ❌ El marcador no se añadió al mapa');
+      }
+    } catch (error) {
+      console.error('ADDUSER: ❌ Error al añadir el marcador:', error);
     }
   }
 }
